@@ -46,7 +46,7 @@ const Input: React.FC<InputProps> = (
       isFocus={isFocus}
       isErrored={false}
     >
-      <Icon color="#393A3A" size={25}/>
+      <Icon color="#393A3A" size="1.66rem"/>
       <input
         onFocus={handleInputFocus}
         onBlur={handleInputBluer}
