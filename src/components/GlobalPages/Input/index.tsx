@@ -5,7 +5,7 @@ import React, {
   useState
 } from 'react';
 import { IconType } from 'react-icons';
-
+import { Field } from 'formik'
 import { Container } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -13,10 +13,18 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon: IconType;
   containerStyle?: object;
   placeholderLabel: string;
+  isErrored?: boolean;
 }
 
 const Input: React.FC<InputProps> = (
-  { name,placeholderLabel, containerStyle = {}, icon: Icon, ...rest}
+  { 
+    name,
+    placeholderLabel,
+    containerStyle = {},
+    icon: Icon, 
+    isErrored = false,
+    ...rest
+  }
 ) => {
   
   const [ isFocus, setIsFocus ] =useState(false);
@@ -44,10 +52,12 @@ const Input: React.FC<InputProps> = (
       style={containerStyle}
       isFilled={isFilled}
       isFocus={isFocus}
-      isErrored={false}
+      isErrored={isErrored}
     >
-      <Icon color="#393A3A" size="1.66rem"/>
-      <input
+      <Icon color={isErrored ? "#E10C40" : "#393A30"} size="1.66rem"/>
+      <Field
+        id={name}
+        name={name}
         onFocus={handleInputFocus}
         onBlur={handleInputBluer}
         ref={inputRef}

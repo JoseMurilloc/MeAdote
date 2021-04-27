@@ -3,9 +3,17 @@ import Link from 'next/link';
 
 import Input from '../../components/GlobalPages/Input';
 import { Container, Header } from './styles';
-import {GoMail} from 'react-icons/go'
+import { IconForgotPassword } from '../../utils/icons';
+import { Form, Formik } from 'formik';
+import { ForgotPasswordSchema, FormValues } from './types';
+
 
 const ForgotPassword: React.FC = () => {
+  
+  const initialValues: FormValues = { 
+    email: '', 
+  };
+
 
   return (
     <Container>
@@ -15,7 +23,7 @@ const ForgotPassword: React.FC = () => {
         <Header>
 
           <aside>
-          <Link href="/SignIn">
+            <Link href="/SignIn">
               <button id="openButton">
                 Entrar
               </button>
@@ -29,23 +37,37 @@ const ForgotPassword: React.FC = () => {
         </Header>
 
         <div className="content">
-          <form>
-            <legend>Bem vindo</legend>
-            <h1>Adote por amor</h1>
-            <p>
-              Aqui você encontra seu melhor amigo, que irá trazer um colorido diferente para sua vida.
-            </p>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={ForgotPasswordSchema}
+            onSubmit={(values, actions) => {
+              console.log({ values, actions });
+            }}
+          >
+             {({ errors, touched }) => (
+                <Form>
+                  <legend>Bem vindo</legend>
+                  <h1>Adote por amor</h1>
+                  <p>
+                    Aqui você encontra seu melhor amigo, que irá trazer um colorido diferente para sua vida.
+                  </p>
 
-            <Input 
-              icon={GoMail}
-              name="email" 
-              placeholderLabel="E-mail"
-              spellCheck={false} 
-            />
+                  <Input 
+                    icon={IconForgotPassword.GoMail}
+                    name="email" 
+                    type="email"
+                    placeholderLabel="E-mail"
+                    spellCheck={false}
+                    isErrored={errors.email && touched.email}
+                  />
 
-          
-            <button>Entrar</button>
-         </form>
+                
+                  <button type="submit">
+                    Entrar
+                  </button>
+                </Form>
+             )}
+         </Formik>
         </div>
       </div>  
     </Container>

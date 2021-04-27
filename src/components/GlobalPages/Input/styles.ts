@@ -16,6 +16,11 @@ export const Container = styled.div<ContainerProps>`
     border: 1px solid rgba(0, 0, 0, 0.12);
   `}
 
+  ${props => props.isErrored && css`
+    border: 1px solid #E10C40;
+    background: rgba(222, 31, 31, 0.05);
+  `}
+
 
   box-sizing: border-box;
   border-radius: 30px;

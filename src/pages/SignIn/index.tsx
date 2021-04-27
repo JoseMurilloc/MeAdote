@@ -1,15 +1,20 @@
-import Input from '../../components/GlobalPages/Input';
-import { Container, Header } from './styles';
+import { 
+  Formik,
+  Form,
+} from 'formik'
 
 import Link from 'next/link';
+import Input from '../../components/GlobalPages/Input';
 
-import { FaFacebookF } from 'react-icons/fa';
-import { MdEmail} from 'react-icons/md'
-import {FaTwitter} from 'react-icons/fa'
-import {GoMail} from 'react-icons/go'
-import { BsLock } from 'react-icons/bs';
+import { Container, Header } from './styles';
+import { IconSigIn } from '../../utils/icons'
+import { FormValues, SignInSchema } from './types';
 
 const SignIn: React.FC = () => {
+  const initialValues: FormValues = { 
+    email: '', 
+    password: ''
+  };
 
   return (
     <Container>
@@ -33,49 +38,77 @@ const SignIn: React.FC = () => {
         </Header>
 
         <div className="content">
-          <form>
-            <legend>Bem vindo</legend>
-            <h1>Adote por amor</h1>
-            <p>
-              Aqui você encontra seu melhor amigo, que irá trazer um colorido diferente para sua vida.
-            </p>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={SignInSchema}
+            onSubmit={(values, actions) => {
+              console.log({ values, actions });
+            }}
+          >
+             {({ errors, touched }) => (
 
-            <Input 
-              icon={GoMail}
-              name="email" 
-              placeholderLabel="E-mail" 
-              spellCheck={false}
-            />
+              <Form>
+                <legend>Bem vindo</legend>
+                <h1>Adote por amor</h1>
+                <header>
+                  <p>
+                    Aqui você encontra seu melhor amigo, que irá trazer um colorido diferente para sua vida.
+                  </p>
+               
+                  {(
+                    (errors.email && touched.email) 
+                    || (errors.password && touched.password)
+                  ) ? (
+                    <span id="errorGlobalMessage">
+                      Erro nas informações inseridas, tente novamente.
+                    </span>
+                  ) : (
+                    <span>&nbsp;</span>
+                  )}
+                </header>
+               
 
-            <Input
-              icon={BsLock}
-              name="password"
-              placeholderLabel="Senha"
-              type="password" 
-            />
+                <Input 
+                  icon={IconSigIn.GoMail}
+                  name="email" 
+                  type="email"
+                  placeholderLabel="E-mail" 
+                  spellCheck={false}
+                  isErrored={errors.email && touched.email}
+                />
 
-            <Link href="/ForgotPassword">
-              <div id="forgot_password">
-                <span>Esqueci minha senha</span>
-              </div>
-            </Link>
+                <Input
+                  icon={IconSigIn.BsLock}
+                  name="password"
+                  placeholderLabel="Senha"
+                  type="password" 
+                  isErrored={errors.password && touched.password}
+                />
 
-            <button>Entrar</button>
+                <Link href="/ForgotPassword">
+                  <div id="forgot_password">
+                    <span>Esqueci minha senha</span>
+                  </div>
+                </Link>
 
-            <div className="socialContainer">
-              <div>
-                <FaFacebookF color="#000" size={20} />
-              </div>
-              
-              <div>
-                <MdEmail color="#000" size={20} />
-              </div>
+                <button type="submit">Entrar</button>
 
-              <div>
-                <FaTwitter color="#000" size={20}/>
-              </div>
-            </div>
-          </form>
+                <div className="socialContainer">
+                  <div>
+                    <IconSigIn.FaFacebookF color="#000" size={20} />
+                  </div>
+                  
+                  <div>
+                    <IconSigIn.MdEmail color="#000" size={20} />
+                  </div>
+
+                  <div>
+                    <IconSigIn.FaTwitter color="#000" size={20}/>
+                  </div>
+                </div>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>  
     </Container>

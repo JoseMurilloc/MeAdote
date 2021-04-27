@@ -1,13 +1,21 @@
-import Input from '../../components/GlobalPages/Input';
-import { Container, Header } from './styles';
 import Link from 'next/link';
+import Input from '../../components/GlobalPages/Input';
 
-import { GoMail } from 'react-icons/go';
-import { BsLock } from 'react-icons/bs';
-import { BiUserCircle } from 'react-icons/bi';
-import { FiPhoneCall } from 'react-icons/fi';
+import { Container, Header } from './styles';
+import { IconSigUp } from '../../utils/icons';
+import { Form, Formik } from 'formik';
+import { FormValues, SignUpSchema } from './types';
 
 const SignUp: React.FC = () => {
+
+  const initialValues: FormValues = { 
+    email: '', 
+    password: '',
+    phone: '',
+    name: '',
+    password_confirmation: ''
+  };
+
 
   return (
     <Container>
@@ -34,50 +42,69 @@ const SignUp: React.FC = () => {
         </Header>
 
         <div className="content">
-          <form>
-            <legend>Bem vindo</legend>
-            <h1>Adote por amor</h1>
-            <p>
-              Aqui você encontra seu melhor amigo, que irá trazer um colorido diferente para sua vida.
-            </p>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={SignUpSchema}
+            onSubmit={(values, actions) => {
+              console.log({ values, actions });
+            }}
+          >
+            {({ errors, touched }) => (           
+              <Form>
+                <legend>Bem vindo</legend>
+                <h1>Adote por amor</h1>
+                
+                <p>
+                  Aqui você encontra seu melhor amigo, que irá trazer um colorido diferente para sua vida.
+                </p>
 
-            <Input 
-              icon={BiUserCircle}
-              name="name" 
-              placeholderLabel="name" 
-              spellCheck={false}
-            />
+                <Input 
+                  icon={IconSigUp.BiUserCircle}
+                  name="name" 
+                  placeholderLabel="name" 
+                  spellCheck={false}
+                  isErrored={errors.name && touched.name}
+                />
 
-            <Input 
-              icon={GoMail}
-              name="email" 
-              placeholderLabel="E-mail" 
-              spellCheck={false}
-            />
+                <Input 
+                  icon={IconSigUp.GoMail}
+                  name="email" 
+                  placeholderLabel="E-mail" 
+                  spellCheck={false}
+                  isErrored={errors.email && touched.email}
+                />
 
-            <Input
-              icon={BsLock}
-              name="password"
-              placeholderLabel="Senha"
-              type="password" 
-            />
+                <Input
+                  icon={IconSigUp.BsLock}
+                  name="password"
+                  placeholderLabel="Senha"
+                  type="password"
+                  isErrored={errors.password && touched.password}
+                />
 
-            <Input
-              icon={BsLock}
-              name="password_confirmation"
-              placeholderLabel="Confirmar Senha"
-              type="password" 
-            />
+                <Input
+                  icon={IconSigUp.BsLock}
+                  name="password_confirmation"
+                  placeholderLabel="Confirmar Senha"
+                  type="password" 
+                  isErrored={
+                    errors.password_confirmation 
+                    && touched.password_confirmation
+                  }
+                />
 
-            <Input
-              icon={FiPhoneCall}
-              name="phone"
-              placeholderLabel="Telefone"
-              type="phone" 
-            />
+                <Input
+                  icon={IconSigUp.FiPhoneCall}
+                  name="phone"
+                  placeholderLabel="Telefone"
+                  type="phone"
+                  isErrored={errors.phone && touched.phone} 
+                />
 
-            <button>Cadastrar</button>
-          </form>
+                <button type="submit">Cadastrar</button>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>  
     </Container>

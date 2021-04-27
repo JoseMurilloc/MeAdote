@@ -66,14 +66,24 @@ export const Container = styled.div`
         margin-bottom: 6px; 
       }
 
-      p {
-        font-size: 14px;
-        line-height: 123.52%;
-        text-align: justify;
-        color: #393A3A;
-        width: 270px;
-        height: 51px;
-        margin-bottom: 24px; 
+
+      header {
+        margin-bottom: 1.6rem; 
+        p {
+          font-size: 0.93rem;
+          line-height: 123.52%;
+          text-align: justify;
+          color: #393A3A;
+          width: 18rem;
+          height: 3.4rem;
+        }
+
+        span#errorGlobalMessage {
+          color: #931515;
+          font-size: 0.8rem;
+          line-height: 123.52%;
+        }
+
       }
 
       button {
