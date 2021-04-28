@@ -17,8 +17,8 @@ export function Header({selectSections}: HeaderProps) {
           <ul>
             {selectSections.map(section => (
               <li 
-                className={`${section.active && 'activeSection'}`} 
                 key={Math.random()}
+                className={section.active && 'activeSection'}
               >
                 {section.title}
               </li>

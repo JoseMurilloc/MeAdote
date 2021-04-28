@@ -4,6 +4,8 @@ export const Container = styled.header`
   padding: 0 5.86rem;
   position: fixed;
   width: 100%;
+  z-index: 3;
+  background: linear-gradient(#FFF2F0, #FDF0F0, #FDF0F0); 
 
 
   div.content {
@@ -21,19 +23,22 @@ export const Container = styled.header`
 
     li { 
       margin-left: 1.6rem;
-      color: rgba(57, 58, 58, 0.7);
-      font-size: 0.933rem;
+
       line-height: 1.13px;
-      cursor: pointer;
-      
+      font-size: 0.933rem;
+      color: rgba(57, 58, 58, 0.7);
+      text-decoration: none;
+  
       &.activeSection {
         font-weight: bold;
         color: var(--monza);
       }
-
+    
       &:first-child {
         margin-left: 0;
       }
+      
+
     }
   }
 
