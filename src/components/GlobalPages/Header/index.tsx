@@ -27,11 +27,15 @@ export function Header({selectSections}: HeaderProps) {
         </nav>
 
         <aside>
-          <button id="openButton">
-            Entrar
-          </button> 
+            <button id="openButton">
+              <Link href="/SignIn">
+                Entrar
+              </Link>
+            </button> 
           <button id="registerButton">
-            Cadastrar
+            <Link href="/SignUp">
+              Cadastrar
+            </Link>
           </button>
         </aside>
       </div>    

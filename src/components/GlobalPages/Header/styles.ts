@@ -50,11 +50,14 @@ export const Container = styled.header`
     }
 
     button#openButton {
-      color: rgba(57, 58, 58, 0.7);
       font-weight: 500;
       font-size: 1.067rem;
       line-height: 1.26rem;
       margin-right: 1.6rem; 
+
+      a {
+        color: rgba(57, 58, 58, 0.7);
+      }
     }
 
     button#registerButton {
@@ -66,10 +69,12 @@ export const Container = styled.header`
       width: 7.734rem;
       height: 2.467rem;
 
-      color: var(--white);
-      font-weight: 500;
-      font-size: 1.067rem;
-      line-height: 1.26rem;
+      a {
+        color: var(--white);
+        font-weight: 500;
+        font-size: 1.067rem;
+        line-height: 1.26rem;
+      }
     }
   }
 `;
