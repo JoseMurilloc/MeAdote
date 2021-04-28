@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface Section {
   title: string,
@@ -7,6 +7,7 @@ interface Section {
 
 export interface SelectSessionData {
   selectSections: Array<Section>
+  handleScroll(event: any): void;
 }
 
 const ScrollContext = createContext<SelectSessionData>({} as SelectSessionData)
@@ -29,17 +30,22 @@ const ScrollProvider: React.FC = ({ children }) => {
       {
         title: 'Adotar',
         active: false,
-      },
-      {
-        title: 'Adotar',
-        active: false,
-      },
-
+      }
     ]
   });
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+  }, [])
+
+  function handleScroll(event: any) {
+  }
+
   return (
-    <ScrollContext.Provider value={{ selectSections: selectSections }}>
+    <ScrollContext.Provider value={{ 
+      selectSections,
+      handleScroll 
+    }}>
       {children}
     </ScrollContext.Provider>
   )

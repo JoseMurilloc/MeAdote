@@ -14,16 +14,21 @@ export type SelectSessionType = {
 }
 
 function ModalWrapper({ children }: ModalWrapperProps) {
-  const {selectSections} = useScroll()
+  const {selectSections, handleScroll} = useScroll()
+  const [heightScreen, setHeightScreen] = useState<number>();
 
   const wrapperRef = useRef<HTMLDivElement>();
 
+
   useEffect(() => {
-    console.log(wrapperRef.current.scrollHeight / 4)
+    setHeightScreen(wrapperRef.current.scrollHeight / 4)
   }, [])
 
   return (
-    <Container ref={wrapperRef}>
+    <Container 
+      ref={wrapperRef}
+      onScroll={() => console.log('Scroll px')}
+    >
       <Header selectSections={selectSections} />
       {children}
     </Container>

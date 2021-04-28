@@ -158,7 +158,7 @@ height: 100vh;
 `;
 
 export const Help = styled.section`
-   height: 100vh;
+  height: 100vh;
   scroll-snap-align: start;
 
   display: flex;
@@ -240,3 +240,29 @@ export const Help = styled.section`
     }
   }
 `;
+
+export const AdoptionFriend = styled.section`
+  height: 100vh;
+  scroll-snap-align: start;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 0 5.93rem;
+
+  legend {
+    font-weight: 500;
+    font-size: 1.71rem;
+    line-height: 2.6rem;
+    color: #393A3A;
+    margin-bottom: 1.66rem;
+  }
+
+  aside {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;  
+    grid-gap: 14px;
+  }
+`
