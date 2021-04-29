@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useScroll } from '../../hooks/ScrollContext';
-import { Header } from '../GlobalPages/Header';
+import { Header } from '../Header';
 
 import { Container } from './styles';
 

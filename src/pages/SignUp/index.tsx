@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Input from '../../components/GlobalPages/Input';
+import Input from '../../components/Input';
 
 import { Container, Header } from './styles';
 import { IconSigUp } from '../../utils/icons';

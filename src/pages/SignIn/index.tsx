@@ -4,17 +4,25 @@ import {
 } from 'formik'
 
 import Link from 'next/link';
-import Input from '../../components/GlobalPages/Input';
+import Input from '../../components/Input';
 
 import { Container, Header } from './styles';
 import { IconSigIn } from '../../utils/icons'
 import { FormValues, SignInSchema } from './types';
+import { useToast } from '../../hooks/ToastContext';
 
 const SignIn: React.FC = () => {
   const initialValues: FormValues = { 
     email: '', 
     password: ''
   };
+
+  const {success} = useToast()
+
+  async function handleSubmitForm(values: FormValues) {
+    console.log(values)
+    success("Success login")
+  }
 
   return (
     <Container>
@@ -41,9 +49,9 @@ const SignIn: React.FC = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={SignInSchema}
-            onSubmit={(values, actions) => {
-              console.log({ values, actions });
-            }}
+            onSubmit={(values, actions) => 
+              handleSubmitForm(values)
+            }
           >
              {({ errors, touched }) => (
 
