@@ -6,14 +6,12 @@ import {
   AdoptionFriend
 } from '../styles/home.styles'
 import { Footer } from '../components/Footer'
-import { BsFillHeartFill } from 'react-icons/bs'
-import { SiDatadog } from 'react-icons/si'
-import { GiCat, GiDogBowl } from 'react-icons/gi'
+import { IconHome } from '../utils/icons'
 
 import ModalWrapper from '../components/ModalWrapper'
 import Card from '../components/Card';
 import { api } from '../services/api';
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 
 
 interface Friend {
@@ -43,7 +41,7 @@ export default function Home({ friends }: HomeProps) {
             <p>Adote seu novo melhor amigo aqui e tenha uma vida repleta de amor todos os dias, amor e carinho todos os dias.</p>
             <button>
               Adote
-              <BsFillHeartFill color="#FFF" />
+              <IconHome.BsFillHeartFill color="#FFF" />
             </button>
           </aside>
           <aside>
@@ -53,16 +51,16 @@ export default function Home({ friends }: HomeProps) {
         <About>
           <aside>
             <div className="green">
-              <SiDatadog size={20} color="#FFF" />
-            </div>
+              <IconHome.SiDatadog size={20} color="#FFF" />
+              </div>
             <div className="yellow">
-              <GiCat size={20} color="#FFF" />
+              <IconHome.GiCat size={20} color="#FFF" />
             </div>
             <div>
-              <BsFillHeartFill size={20} color="#FFF" />
+              <IconHome.BsFillHeartFill size={20} color="#FFF" />
             </div>
             <div className="purple">
-              <GiDogBowl size={20} color="#FFF" />
+              <IconHome.GiDogBowl size={20} color="#FFF" />
             </div>
           </aside>
           <main>
