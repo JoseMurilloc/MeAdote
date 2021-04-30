@@ -68,4 +68,17 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+
+  /* Global styles for Toast */
+
+  .Toastify__toast--success {
+    background-color: #58BAA2;
+    font-weight: 500;
+  }
+
+  .Toastify__toast--error {
+    background-color: #D20637;
+    font-weight: 500;
+  } 
 `;
