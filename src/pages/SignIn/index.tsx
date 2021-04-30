@@ -4,12 +4,14 @@ import {
 } from 'formik'
 
 import Link from 'next/link';
+import Image from 'next/image';
 import Input from '../../components/Input';
 
 import { Container, Header } from './styles';
 import { IconSigIn } from '../../utils/icons'
 import { FormValues, SignInSchema } from './types';
 import { useToast } from '../../hooks/ToastContext';
+import { useAuth } from '../../hooks/AuthContext';
 
 const SignIn: React.FC = () => {
   const initialValues: FormValues = { 
@@ -17,16 +19,36 @@ const SignIn: React.FC = () => {
     password: ''
   };
 
-  const {success} = useToast()
+  const {success, error} = useToast()
+  const {sigIn} = useAuth()
 
   async function handleSubmitForm(values: FormValues) {
-    console.log(values)
-    success("Success login")
+    
+    const { email, password } = values
+
+    try { 
+      const credentials = {
+        email,  
+        password,  
+      }
+
+      await sigIn(credentials)
+      
+      success("Success login")
+    } catch {
+      error("Error login")
+    }
+
   }
 
   return (
     <Container>
-      <img src="/images/dogCity.png" alt="Dog city"/>
+      <Image 
+        src="/images/dogCity.png" 
+        alt="Dog city"
+        width="250px"
+        height="100vh"
+      />
 
       <div style={{width: '100%'}}>
         <Header>
@@ -67,11 +89,13 @@ const SignIn: React.FC = () => {
                     (errors.email && touched.email) 
                     || (errors.password && touched.password)
                   ) ? (
-                    <span id="errorGlobalMessage">
-                      Erro nas informações inseridas, tente novamente.
-                    </span>
+                    <div id="errorGlobalMessage">
+                      <span>
+                        Erro nas informações inseridas, tente novamente.
+                      </span>
+                    </div>
                   ) : (
-                    <span>&nbsp;</span>
+                    <div>&nbsp;</div>
                   )}
                 </header>
                
@@ -103,15 +127,15 @@ const SignIn: React.FC = () => {
 
                 <div className="socialContainer">
                   <div>
-                    <IconSigIn.FaFacebookF color="#000" size={20} />
+                    <IconSigIn.FaFacebookF color="#393A3A" size={20} />
                   </div>
                   
                   <div>
-                    <IconSigIn.MdEmail color="#000" size={20} />
+                    <IconSigIn.MdEmail color="#393A3A" size={20} />
                   </div>
 
                   <div>
-                    <IconSigIn.FaTwitter color="#000" size={20}/>
+                    <IconSigIn.FaTwitter color="#393A3A" size={20}/>
                   </div>
                 </div>
               </Form>
