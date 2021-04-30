@@ -6,6 +6,7 @@ import { Container, Header } from './styles';
 import { IconForgotPassword } from '../../utils/icons';
 import { Form, Formik } from 'formik';
 import { ForgotPasswordSchema, FormValues } from './types';
+import Image from 'next/image';
 
 
 const ForgotPassword: React.FC = () => {
@@ -17,7 +18,12 @@ const ForgotPassword: React.FC = () => {
 
   return (
     <Container>
-      <img src="/images/dogCity.png" alt="Dog city"/>
+      <Image 
+        src="/images/dogCity.png"
+        alt="Dog city"
+        width="250px"
+        height="100vh"
+      />
 
       <div style={{width: '100%'}}>
         <Header>
@@ -52,14 +58,27 @@ const ForgotPassword: React.FC = () => {
                     Aqui você encontra seu melhor amigo, que irá trazer um colorido diferente para sua vida.
                   </p>
 
-                  <Input 
-                    icon={IconForgotPassword.GoMail}
-                    name="email" 
-                    type="email"
-                    placeholderLabel="E-mail"
-                    spellCheck={false}
-                    isErrored={errors.email && touched.email}
-                  />
+                    {(
+                      (errors.email && touched.email) 
+                      || (errors.email && touched.email)
+                    ) ? (
+                      <div id="errorGlobalMessage">
+                        <span>
+                          {errors.email}
+                        </span>
+                      </div>
+                    ) : (
+                      <div>&nbsp;</div>
+                    )}
+
+                    <Input 
+                      icon={IconForgotPassword.GoMail}
+                      name="email" 
+                      type="email"
+                      placeholderLabel="E-mail"
+                      spellCheck={false}
+                      isErrored={errors.email && touched.email}
+                    />
 
                 
                   <button type="submit">

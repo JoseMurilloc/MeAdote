@@ -5,6 +5,7 @@ import { Container, Header } from './styles';
 import { IconSigUp } from '../../utils/icons';
 import { Form, Formik } from 'formik';
 import { FormValues, SignUpSchema } from './types';
+import Image from 'next/image';
 
 const SignUp: React.FC = () => {
 
@@ -19,10 +20,14 @@ const SignUp: React.FC = () => {
 
   return (
     <Container>
-      <img 
+      <Image 
         src="/images/dogRegister.png" 
         alt="Dog city"
+        width="250px"
+        height="100%"
       />
+
+      
 
       <div style={{width: '100%'}}>
         <Header>
@@ -57,6 +62,19 @@ const SignUp: React.FC = () => {
                 <p>
                   Aqui você encontra seu melhor amigo, que irá trazer um colorido diferente para sua vida.
                 </p>
+
+                {(
+                  (errors.email && touched.email) 
+                  || (errors.password && touched.password)
+                ) ? (
+                  <div id="errorGlobalMessage">
+                    <span>
+                      Erro nas informações inseridas, tente novamente.
+                    </span>
+                  </div>
+                ) : (
+                  <div>&nbsp;</div>
+                )}
 
                 <Input 
                   icon={IconSigUp.BiUserCircle}

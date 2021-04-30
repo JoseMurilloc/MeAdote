@@ -5,13 +5,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
 
+
   background-color: #FEF5F2;
   color: #393A3A;
-
-  img {
-    height: 100%;
-  }
-
+  
   div.content {
     width: 388px;
     height: 475px;
@@ -75,6 +72,16 @@ export const Container = styled.div`
         height: 51px;
         margin-bottom: 24px; 
       }
+
+        div#errorGlobalMessage {
+          margin: 0;
+          color: #931515;
+          font-size: 0.8rem;
+          line-height: 123.52%;
+          background-color: #93151562;
+          border-radius: 0.4rem;
+          padding: 3px;
+        }
 
       button {
         background: #BB506A;

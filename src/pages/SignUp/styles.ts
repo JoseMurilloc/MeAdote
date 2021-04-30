@@ -8,9 +8,6 @@ export const Container = styled.div`
   background-color: #FEF5F2;
   color: #393A3A;
 
-  img {
-    height: 100%;
-  }
 
   div.content {
     width: 25.86rem;
@@ -56,6 +53,15 @@ export const Container = styled.div`
         width: 270px;
         height: 51px;
         margin-bottom: 24px; 
+      }
+
+      div#errorGlobalMessage {
+        color: #931515;
+        font-size: 0.8rem;
+        line-height: 123.52%;
+        background-color: #93151562;
+        border-radius: 0.4rem;
+        padding: 3px;
       }
 
       button {
