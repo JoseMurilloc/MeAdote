@@ -1,4 +1,13 @@
 {
+  "sessions": [
+    {
+      "user": {
+        "email": "jooseemurillo@gmail.com",
+        "password": "123456"
+      },
+      "token": "skosjkfsovos56564464599"
+    }
+  ],
   "friends": [
     {
       "id": 1,
