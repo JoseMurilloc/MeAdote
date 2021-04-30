@@ -5,15 +5,15 @@ import {
   Help,
   AdoptionFriend
 } from '../styles/home.styles'
-import { Footer } from '../components/GlobalPages/Footer'
+import { Footer } from '../components/Footer'
 import { BsFillHeartFill } from 'react-icons/bs'
 import { SiDatadog } from 'react-icons/si'
 import { GiCat, GiDogBowl } from 'react-icons/gi'
 
 import ModalWrapper from '../components/ModalWrapper'
 import Card from '../components/Card';
-import { useEffect, useState } from 'react';
 import { api } from '../services/api';
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
 
 
 interface Friend {
@@ -23,15 +23,12 @@ interface Friend {
   gender: 'f' | 'm';
 }
 
+interface HomeProps {
+  friends: Friend[];
+}
 
-export default function Home() {
-  const [friends, setFriends] = useState<Friend[]>([]);
 
-  useEffect(() => {
-    api.get(`/friends`).then(response => {
-      setFriends(response.data)
-    })
-  }, []);
+export default function Home({ friends }: HomeProps) {
 
   return (
     <>
@@ -128,6 +125,7 @@ export default function Home() {
           <aside>
             {friends?.map(friend => (
               <Card 
+                key={friend.name}
                 name={friend.name} 
                 age={friend.age}
                 gender={friend.gender}
@@ -140,4 +138,17 @@ export default function Home() {
       </ModalWrapper>
     </>
   )
+}
+
+
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+
+    const response = await api.get('/friends?_page=1&_limit=12');
+    const friends = response.data;
+
+    return {
+      props: {
+        friends
+      },
+    }
 }

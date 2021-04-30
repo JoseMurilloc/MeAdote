@@ -4,6 +4,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 interface ToastContextData {
   success: (message: string) => React.ReactText
+  error: (message: string) => React.ReactText
 }
 
 const ToastContext = createContext<ToastContextData>(
@@ -14,9 +15,12 @@ const ToastProvider: React.FC = ({children}) => {
   const success = (message: string) => toast
     .success(message);
 
+  const error = (message: string) => toast
+    .error(message);
+
 
   return (
-    <ToastContext.Provider value={{success}}>
+    <ToastContext.Provider value={{ success, error }}>
       <ToastContainer />
       {children}
     </ToastContext.Provider>
