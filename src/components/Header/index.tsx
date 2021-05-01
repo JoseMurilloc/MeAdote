@@ -1,6 +1,4 @@
-
-import Link from 'next/link';
-import { SelectSessionType } from '../../ModalWrapper';
+import { SelectSessionType } from '../ModalWrapper';
 import { Container } from './styles';
 
 interface HeaderProps {
@@ -8,6 +6,7 @@ interface HeaderProps {
 }
 
 export function Header({selectSections}: HeaderProps) {
+
   return (
     <Container>
       <div className="content">
@@ -27,15 +26,11 @@ export function Header({selectSections}: HeaderProps) {
         </nav>
 
         <aside>
-            <button id="openButton">
-              <Link href="/SignIn">
-                Entrar
-              </Link>
-            </button> 
+          <button id="openButton">
+            Entrar
+          </button> 
           <button id="registerButton">
-            <Link href="/SignUp">
-              Cadastrar
-            </Link>
+            Cadastrar
           </button>
         </aside>
       </div>    

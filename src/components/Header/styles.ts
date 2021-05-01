@@ -4,7 +4,7 @@ export const Container = styled.header`
   padding: 0 5.86rem;
   position: fixed;
   width: 100%;
-  z-index: 3;
+  z-index: 1;
   background: linear-gradient(#FFF2F0, #FDF0F0, #FDF0F0); 
 
 
@@ -54,10 +54,7 @@ export const Container = styled.header`
       font-size: 1.067rem;
       line-height: 1.26rem;
       margin-right: 1.6rem; 
-
-      a {
-        color: rgba(57, 58, 58, 0.7);
-      }
+      color: rgba(57, 58, 58, 0.7);    
     }
 
     button#registerButton {
@@ -68,13 +65,10 @@ export const Container = styled.header`
       
       width: 7.734rem;
       height: 2.467rem;
-
-      a {
-        color: var(--white);
-        font-weight: 500;
-        font-size: 1.067rem;
-        line-height: 1.26rem;
-      }
+      color: var(--white);
+      font-weight: 500;
+      font-size: 1.067rem;
+      line-height: 1.26rem;
     }
   }
 `;
