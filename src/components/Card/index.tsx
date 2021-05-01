@@ -20,7 +20,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <Container>
       <img 
-        src="/images/dogCard.png" 
+        src={photo} 
         alt="Profile dog"
       />
       <span>{name}</span>

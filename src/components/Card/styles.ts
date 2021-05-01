@@ -10,6 +10,8 @@ export const Container = styled.div`
 
   img {
     border-radius: 0.61rem;
+    height: 9.17rem;
+    width: 11.2rem;
   }
 
   span {
@@ -26,8 +28,8 @@ export const Container = styled.div`
     margin-top: 1.026rem;
 
     div.year {
-      width: 56.59px;
-      height: 17.97px;
+      width: 3.73rem;
+      height: 1.19rem;
       
       border-radius: 17.9665px;
       display: flex;
