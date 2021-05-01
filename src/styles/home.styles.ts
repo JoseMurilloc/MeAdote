@@ -248,21 +248,43 @@ export const AdoptionFriend = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   padding: 0 5.93rem;
 
   legend {
     font-weight: 500;
+    margin-top: 2rem;
     font-size: 1.71rem;
     line-height: 2.6rem;
     color: #393A3A;
-    margin-bottom: 1.66rem;
+  }
+  button {
+    width: 6.48rem;
+    height: 2.06rem;
+    border: 0.837838px solid rgba(86, 87, 88, 0.31);
+    border-radius: 3.61rem;
+    background: transparent;
+
+    color: #393A3A;
+    font-size: 0.93rem;
+    line-height: 1.13rem;
   }
 
   aside {
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;  
-    grid-gap: 14px;
+    grid-gap: 0.93rem;
+
+    @media (max-width: 1190px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;  
+      grid-gap: 0.93rem;
+    }
+
+    @media (max-width: 880px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;  
+      grid-gap: 0.93rem;
+    }
   }
 `

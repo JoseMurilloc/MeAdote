@@ -1,3 +1,4 @@
+import '../services/miragejs';
 import Head from 'next/head';
 import {
   Start,
@@ -11,22 +12,26 @@ import { IconHome } from '../utils/icons'
 import ModalWrapper from '../components/ModalWrapper'
 import Card from '../components/Card';
 import { api } from '../services/api';
+import { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 
-
 interface Friend {
+  id: number;
   name: string;
   age: number;
-  phone: string;
+  photo: string;
   gender: 'f' | 'm';
 }
 
-interface HomeProps {
-  friends: Friend[];
-}
 
+export default function Home() {
 
-export default function Home({ friends }: HomeProps) {
+  const [friends, setFriends] = useState<Friend[]>();
+
+  useEffect(() => {
+    api.get('/friends')
+      .then(response => setFriends(response.data))
+  } ,[])
 
   return (
     <>
@@ -52,7 +57,7 @@ export default function Home({ friends }: HomeProps) {
           <aside>
             <div className="green">
               <IconHome.SiDatadog size={20} color="#FFF" />
-              </div>
+            </div>
             <div className="yellow">
               <IconHome.GiCat size={20} color="#FFF" />
             </div>
@@ -120,15 +125,30 @@ export default function Home({ friends }: HomeProps) {
           <legend>
             Disponíveis para adoção
           </legend>
+          <div style={{ 
+            display: 'flex',
+            width: '100%',
+            justifyContent: 'flex-end',
+            marginBottom: 25
+          }}>
+            <button className="viewMore">
+              Ver mais
+            </button>
+          </div>
           <aside>
-            {friends?.map(friend => (
-              <Card 
-                key={friend.name}
-                name={friend.name} 
-                age={friend.age}
-                gender={friend.gender}
-              />
-            ))}
+            {friends ? (
+              friends.map(friend => (
+                <Card 
+                  photo={friend.photo}
+                  key={friend.id}
+                  name={friend.name} 
+                  age={friend.age}
+                  gender={friend.gender}
+                />
+              ))
+            ): (
+              <span>Carregando</span>
+            )}
           </aside>
         </AdoptionFriend>
         
@@ -138,15 +158,7 @@ export default function Home({ friends }: HomeProps) {
   )
 }
 
-
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-
-    const response = await api.get('/friends?_page=1&_limit=12');
-    const friends = response.data;
-
-    return {
-      props: {
-        friends
-      },
-    }
+interface HomeProps {
+  friends: Friend[];
 }
+
