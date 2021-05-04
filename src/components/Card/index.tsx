@@ -31,7 +31,7 @@ const Card: React.FC<CardProps> = ({
           ? '#1C88D6' 
           : '#D20637' 
         }}>
-          {`${age} ano`}
+          {age > 1 ? `${age} anos` : `${age} ano`} 
         </div>
       </div>
       <div style={{position: 'absolute', bottom: 7, right: 11}}>
