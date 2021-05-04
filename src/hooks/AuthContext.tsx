@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useState } from "react";
+import React, { createContext, useCallback, useEffect, useState } from "react";
 import { useContext } from "react";
 import { api } from "../services/api";
 
@@ -34,15 +34,33 @@ const AuthProvider: React.FC = ({ children }) => {
   
   const [data, setData] = useState<AuthState>({} as AuthState);
   
-  const sigIn = useCallback(async ({ email, password}) => {
-    const response = await api.get(`/sessions?email=${email}`)
-
-    const responseData = response.data[0];
+  useEffect(() => {
+    const user = localStorage.getItem('@MeAdota:user')
+    const token = localStorage.getItem('@MeAdota:token')
     
-    const { token, user } = responseData;
+    const dataFormat = {
+      user: JSON.parse(user) as User,
+      token: token
+    }
 
-    localStorage.setItem('@GBB:token', token);
-    localStorage.setItem('@GBB:user', JSON.stringify(user));
+    setData(dataFormat)
+  }, [])
+
+  const sigIn = useCallback(async ({email, password}) => {
+    // Fake 
+    const user: User = {
+      email,
+      name: 'Murillo'
+    } 
+
+    if (password === '123456') {
+      throw new Error('Error Login')
+    }
+
+    const token = Math.random().toString()
+
+    localStorage.setItem('@MeAdota:token', token);
+    localStorage.setItem('@MeAdota:user', JSON.stringify(user));
 
     api.defaults.headers.authorization = `Bearer ${token}`;
 
@@ -53,8 +71,8 @@ const AuthProvider: React.FC = ({ children }) => {
 
   const sigOut = useCallback(() => {
 
-    localStorage.removeItem('@GBB:token');
-    localStorage.removeItem('@GBB:user');
+    localStorage.removeItem('@MeAdota:token');
+    localStorage.removeItem('@MeAdota:user');
 
     setData({ } as AuthState);
   }, [])

@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Start = styled.section`
-   height: 100vh;
+  height: 100vh;
   padding: 0 5.86rem;
   scroll-snap-align: start;
 
