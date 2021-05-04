@@ -11,19 +11,17 @@ interface Friend {
 createServer({
 
   models: {
-    friend: Model.extend<Partial<Friend>>({})
+    friend: Model.extend<Partial<Friend>>({}),
   },
 
   seeds(server) {
-    server.create("friend", 
-      { 
-        id: 1,
-        name: "Dengosa",
-        photo: "https://86cb8127dc14737f5057-7c0671222953158607ea93d5febd68b4.ssl.cf1.rackcdn.com/660/assets/responsive/489000/489354/dogingrass.jpg",
-        age: 1,
-        gender: "f"
-      }
-    )
+    server.create("friend", { 
+      id: 1,
+      name: "Dengosa",
+      photo: "https://86cb8127dc14737f5057-7c0671222953158607ea93d5febd68b4.ssl.cf1.rackcdn.com/660/assets/responsive/489000/489354/dogingrass.jpg",
+      age: 1,
+      gender: "f"
+    })
     server.create("friend", {
         id: 2,
         name: "Madalena",
@@ -107,7 +105,6 @@ createServer({
     this.namespace = "api"
 
     this.get('/friends', schema => schema.db.friends);
-
     this.post("/friends", (schema, request) => {
       const attrs = JSON.parse(request.requestBody);
 
