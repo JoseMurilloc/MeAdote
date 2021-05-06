@@ -1,11 +1,7 @@
 import React, { useContext } from 'react';
 import { createContext } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-
-interface ToastContextData {
-  success: (message: string) => React.ReactText
-  error: (message: string) => React.ReactText
-}
+import { ToastContextData } from './types/toast';
 
 const ToastContext = createContext<ToastContextData>(
   {} as ToastContextData

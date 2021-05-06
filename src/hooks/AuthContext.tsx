@@ -1,37 +1,18 @@
-import React, { createContext, useCallback, useEffect, useState } from "react";
+import React, { 
+  createContext, 
+  useCallback, 
+  useEffect, 
+  useState 
+} from "react";
 import { useContext } from "react";
 import { api } from "../services/api";
-
-interface User {
-  name: string;
-  email: string;
-}
-
-interface AuthState {
-  token: string;
-  user: User;
-}
-
-interface Credentials {
-  email: string;
-  password: string;
-}
-
-interface AuthContextData {
-  user: User;
-
-  sigIn(credentials: Credentials): Promise<void>;
-  sigOut(): void;
-  updatedAvatar(user: User): void;
-}
+import { AuthContextData, AuthState, User } from "./types/auth";
 
 const AuthContext = createContext<AuthContextData>(
   {} as AuthContextData
 );
 
-
 const AuthProvider: React.FC = ({ children }) => {
-  
   const [data, setData] = useState<AuthState>({} as AuthState);
   
   useEffect(() => {

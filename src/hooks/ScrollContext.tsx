@@ -1,16 +1,14 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { 
+  createContext, 
+  useContext, 
+  useEffect, 
+  useState 
+} from "react";
+import { Section, SelectSessionData } from "./types/scroll";
 
-interface Section {
-  title: string,
-  active: boolean,
-}
-
-export interface SelectSessionData {
-  selectSections: Array<Section>
-  handleScroll(event: any): void;
-}
-
-const ScrollContext = createContext<SelectSessionData>({} as SelectSessionData)
+const ScrollContext = createContext<SelectSessionData>(
+  {} as SelectSessionData
+)
 
 const ScrollProvider: React.FC = ({ children }) => {
   const [selectSections, setSelectSections] = useState<Section[]>(() => {
