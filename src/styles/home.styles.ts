@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100vh;
-  scroll-snap-align: start;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 `;
 
 export const Start = styled.section`
@@ -229,6 +230,9 @@ export const Help = styled.section`
 
         img {
           margin-bottom: 0.73rem;
+          width: 3.3333rem;
+          height: 3.3333rem;
+          border-radius: 0.8667rem;
         }
 
         span {
@@ -256,6 +260,13 @@ export const AdoptionFriend = styled.section`
     font-size: 1.71rem;
     line-height: 2.6rem;
     color: #393A3A;
+  }
+
+  div.containerViewMore {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 1.6667rem;
   }
   button {
     width: 6.48rem;

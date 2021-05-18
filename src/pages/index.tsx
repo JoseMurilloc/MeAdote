@@ -1,19 +1,19 @@
-import '../services/miragejs';
 import Head from 'next/head';
 import {
   Start,
   About,
   Help,
-  AdoptionFriend
+  AdoptionFriend,
+  Container
 } from '../styles/home.styles'
 import { Footer } from '../components/Footer'
 import { IconHome } from '../utils/icons'
 
-import ModalWrapper from '../components/ModalWrapper'
 import Card from '../components/Card';
-import { api } from '../services/api';
-import { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
+import { Header } from '../components/Header';
+import { useEffect, useState } from 'react';
+import { api } from '../services/api';
 
 interface Friend {
   id: number;
@@ -23,15 +23,17 @@ interface Friend {
   gender: 'f' | 'm';
 }
 
-
 export default function Home() {
 
-  const [friends, setFriends] = useState<Friend[]>();
+  const [animal, setAnimal] = useState<Friend[]>();
 
-  useEffect(() => {
-    api.get('/friends')
-      .then(response => setFriends(response.data))
-  } ,[])
+  useEffect(() =>{
+    api.get('/animals?_page=1&_limit=12')
+      .then(response => {
+        setAnimal(response.data)
+      })
+      .catch(err => console.error(err))
+  }, [])
 
   return (
     <>
@@ -39,11 +41,14 @@ export default function Home() {
         <title>Início | Me Adote</title>
       </Head>
 
-      <ModalWrapper>
+      <Header />
+      <Container>
         <Start>
           <aside>
             <h1>Me Adote</h1>
-            <p>Adote seu novo melhor amigo aqui e tenha uma vida repleta de amor todos os dias, amor e carinho todos os dias.</p>
+            <p>
+              Adote seu novo melhor amigo aqui e tenha uma vida repleta de amor todos os dias, amor e carinho todos os dias.
+            </p>
             <button>
               Adote
               <IconHome.BsFillHeartFill color="#FFF" />
@@ -95,25 +100,25 @@ export default function Home() {
             <h1>Nossas contas dísponiveis para doações</h1>
             <section>
               <div className="card">
-                <img src="/images/nubank.svg" alt="Bank"/>
+                <img src="/banks/nubank.png" alt="Bank"/>
                 <span>Agência 0001</span>
                 <span>Conta 56485-6</span>
                 <span>PIX: 012563</span>
               </div>
               <div className="card">
-                <img src="/images/nubank.svg" alt="Bank"/>
+                <img src="/banks/BB.png" alt="Bank"/>
                 <span>Agência 0001</span>
                 <span>Conta 56485-6</span>
                 <span>PIX: 012563</span>
               </div>
               <div className="card">
-                <img src="/images/nubank.svg" alt="Bank"/>
+                <img src="/banks/santander.png" alt="Bank"/>
                 <span>Agência 0001</span>
                 <span>Conta 56485-6</span>
                 <span>PIX: 012563</span>
               </div>
               <div className="card">
-                <img src="/images/nubank.svg" alt="Bank"/>
+                <img src="/banks/itau.png" alt="Bank"/>
                 <span>Agência 0001</span>
                 <span>Conta 56485-6</span>
                 <span>PIX: 012563</span>
@@ -125,19 +130,13 @@ export default function Home() {
           <legend>
             Disponíveis para adoção
           </legend>
-          <div style={{ 
-            display: 'flex',
-            width: '100%',
-            justifyContent: 'flex-end',
-            marginBottom: 25
-          }}>
+          <div className="containerViewMore">
             <button className="viewMore">
               Ver mais
             </button>
           </div>
           <aside>
-            {friends ? (
-              friends.map(friend => (
+              {animal?.map(friend => (
                 <Card 
                   photo={friend.photo}
                   key={friend.id}
@@ -145,20 +144,11 @@ export default function Home() {
                   age={friend.age}
                   gender={friend.gender}
                 />
-              ))
-            ): (
-              <span>Carregando</span>
-            )}
+              ))}
           </aside>
         </AdoptionFriend>
-        
         <Footer />
-      </ModalWrapper>
+      </Container>
     </>
   )
 }
-
-interface HomeProps {
-  friends: Friend[];
-}
-
