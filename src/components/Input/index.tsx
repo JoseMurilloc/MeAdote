@@ -54,7 +54,10 @@ const Input: React.FC<InputProps> = (
       isFocus={isFocus}
       isErrored={isErrored}
     >
-      <Icon color={isErrored ? "#E10C40" : "#393A30"} size="1.66rem"/>
+      <Icon 
+        color={isErrored ? "#E10C40" : "#393A30"} 
+        size="1.66rem"
+      />
       <Field
         id={name}
         name={name}

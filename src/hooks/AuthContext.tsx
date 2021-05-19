@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { 
   createContext, 
   useCallback, 
@@ -5,8 +6,13 @@ import React, {
   useState 
 } from "react";
 import { useContext } from "react";
-import { api } from "../services/api";
-import { AuthContextData, AuthState, User } from "./types/auth";
+import { Authentication } from "../pages/Authentication";
+import { api, apiAdonis } from "../services/api";
+import { 
+  AuthContextData, 
+  AuthState, 
+  User 
+} from "./types/auth";
 
 const AuthContext = createContext<AuthContextData>(
   {} as AuthContextData
@@ -14,6 +20,7 @@ const AuthContext = createContext<AuthContextData>(
 
 const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>({} as AuthState);
+  const isAuthenticated = !!data.user
   
   useEffect(() => {
     const user = localStorage.getItem('@MeAdota:user')
@@ -28,22 +35,19 @@ const AuthProvider: React.FC = ({ children }) => {
   }, [])
 
   const sigIn = useCallback(async ({email, password}) => {
-    // Fake 
-    const user: User = {
+
+    const response = await apiAdonis.post('/sessions', {
       email,
-      name: 'Murillo'
-    } 
+      password
+    })
 
-    if (password === '123456') {
-      throw new Error('Error Login')
-    }
-
-    const token = Math.random().toString()
+    const { token, user } = response.data;
 
     localStorage.setItem('@MeAdota:token', token);
     localStorage.setItem('@MeAdota:user', JSON.stringify(user));
 
     api.defaults.headers.authorization = `Bearer ${token}`;
+    apiAdonis.defaults.headers.authorization = `Bearer ${token}`;
 
     setData({ token, user });
 
@@ -67,14 +71,17 @@ const AuthProvider: React.FC = ({ children }) => {
     })
   }, [setData, data.token])
 
+  const router = useRouter()
+
   return (
     <AuthContext.Provider value={{ 
       user: data.user, 
-      sigIn, 
-      sigOut, 
-      updatedAvatar
+      sigIn,
+      sigOut,
+      updatedAvatar,
+      isAuthenticated
     }}>
-      { children }
+      {children}
     </AuthContext.Provider>
   )
 }

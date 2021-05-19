@@ -1,27 +1,28 @@
-import { SelectSessionType } from '../ModalWrapper';
 import { Container } from './styles';
 
-interface HeaderProps {
-  selectSections?: SelectSessionType[];
-}
-
-export function Header({selectSections}: HeaderProps) {
-
+export function Header() {
   return (
     <Container>
       <div className="content">
-        <img src="/images/MeAdotaLogo.svg" alt="Logo page"/>
+        <img 
+          src="/images/MeAdotaLogo.svg" 
+          alt="Logo page"
+        />
 
         <nav>
           <ul>
-            {selectSections.map(section => (
-              <li 
-                key={Math.random()}
-                className={section.active ? 'activeSection' : ''}
-              >
-                {section.title}
-              </li>
-            ))}
+            <li key={Math.random()} className={'activeSection'}>
+              Inicial
+            </li>
+            <li key={Math.random()}>
+              Quem somos?
+            </li>
+            <li key={Math.random()}>
+              Ajude
+            </li>
+            <li key={Math.random()}>
+              Adotar
+            </li>
           </ul>
         </nav>
 

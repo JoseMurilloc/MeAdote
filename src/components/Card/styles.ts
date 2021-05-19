@@ -7,6 +7,7 @@ export const Container = styled.div`
   height: 15.07rem;
   padding: 0.367rem 0.49rem;
   position: relative;
+  cursor: pointer;
 
   img {
     border-radius: 0.61rem;
@@ -31,13 +32,13 @@ export const Container = styled.div`
       width: 3.73rem;
       height: 1.19rem;
       
-      border-radius: 17.9665px;
+      border-radius: 1.1333rem;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      font-size: 10.7799px;
-      line-height: 13px;
+      font-size: 0.6667rem;
+      line-height: 0.8667rem;
       color: #FFFFFF;
     }
   }

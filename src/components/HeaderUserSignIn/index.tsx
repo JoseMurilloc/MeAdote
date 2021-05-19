@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { AiFillHeart } from 'react-icons/ai';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { HiUserCircle } from 'react-icons/hi';
@@ -12,21 +12,21 @@ const HeaderUserSignIn: React.FC = () => {
   const { user } = useAuth()
   const [toggleMenu, setToggleMenu] = useState(false);
   
-  function handleToggleMenu () {
+  const handleToggleMenu = useCallback(() => {
     setToggleMenu(state => !state)
-  }
+  }, [])
 
   return (
     <Container>
       <Image
-         src="/images/MeAdotaLogo.svg"
+        src="/images/MeAdotaLogo.svg"
         width="56px"
         height="54px"
       />
 
       <Content>
         <div>
-          <AiFillHeart color="#D20637" size={30} />
+          <AiFillHeart color="#D20637" size={25} />
           <span style={{marginTop: 6}} >Preferidos</span>
         </div>
 

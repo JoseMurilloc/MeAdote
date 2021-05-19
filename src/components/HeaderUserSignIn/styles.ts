@@ -52,16 +52,14 @@ export const ActionUser = styled.div`
   }
 
   div.menu::before {
-    content: '';
+    content: "";
+    display: block;
     position: absolute;
-    top: -0.3333rem;
-    right: 1.8667rem;
-    width:1.3333rem;
-    height: 1.3333rem;
-    background-color: #FEF5F2;
-    transform: rotate(45deg);
-    border: 0.0667rem solid #FCDBCF;
-    z-index: -2;
+    top: -1.6rem;
+    right: 1rem;
+    border-color: transparent transparent #FCDBCF;
+    border-style: solid;
+    border-width: 0.8rem;
   }
 
   div.menu {
@@ -108,8 +106,8 @@ export const ActionUser = styled.div`
 
       a {
         font-weight: 300;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1.0667rem;
+        line-height: 1.2667rem;
         color: #393A3A;
         transition: 0.5s;
       }

@@ -1,21 +1,18 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100vh;
-  scroll-snap-align: start;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
 `;
 
 export const FooterContainer = styled.footer`
   background: #AC2747;
-  height: 268px;
+  height: 17.8667rem;
 
   display: flex;
   justify-content: space-between;
-  
 `;
 
 export const SociaisContainer = styled.div`
@@ -50,9 +47,9 @@ export const ContactContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 25px;
-  min-width: 500px;
-  max-height: 159px;
+  padding: 1.6667rem;
+  min-width: 33.3333rem;
+  max-height: 10.6rem;
   
   > div {
     display: flex;

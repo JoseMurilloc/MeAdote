@@ -1,6 +1,7 @@
 export interface User {
   name: string;
   email: string;
+  password?: string;
 }
 
 export interface AuthState {
@@ -15,6 +16,7 @@ export interface Credentials {
 
 export interface AuthContextData {
   user: User;
+  isAuthenticated: boolean;
 
   sigIn(credentials: Credentials): Promise<void>;
   sigOut(): void;
