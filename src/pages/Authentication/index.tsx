@@ -1,8 +1,7 @@
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-
 import { Container, Header } from './styles';
-import React from 'react';
 
 export const Authentication: React.FC = ({children}) => {
   return (
@@ -12,6 +11,7 @@ export const Authentication: React.FC = ({children}) => {
         alt="Dog city"
         width="250px"
         height="100vh"
+        priority
       />
 
       <div style={{width: '100%'}}>

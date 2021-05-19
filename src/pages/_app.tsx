@@ -1,9 +1,10 @@
+import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router'
 import AppProvider from '../hooks'
 import GlobalStyles from '../styles/GlobalStyles'
 import HeaderUserSignIn from '../components/HeaderUserSignIn';
-import React from 'react';
+import { Authentication } from './Authentication';
 
 function MyApp({ Component, pageProps }) {
   const route = useRouter()
@@ -11,10 +12,21 @@ function MyApp({ Component, pageProps }) {
     <>
       <GlobalStyles />
       <AppProvider>
-        { route.asPath === '/Home' &&  (
+        { route.asPath === '/Initial' &&  (
           <HeaderUserSignIn />
         ) }
-        <Component {...pageProps} />
+
+        { route.asPath === '/Authentication/SignIn'
+        || route.asPath === '/Authentication/SignUp'
+        || route.asPath === '/Authentication/ForgotPassword'
+        ? (
+          <Authentication>
+            <Component {...pageProps} />    
+          </Authentication>
+        ) : (
+          <Component {...pageProps} />
+        ) 
+        }
       </AppProvider>
     </>
   )

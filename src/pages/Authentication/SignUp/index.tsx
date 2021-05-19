@@ -19,88 +19,84 @@ const SignUp: React.FC = () => {
 
 
   return (
+    <ContainerContent>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={SignUpSchema}
+        onSubmit={(values, actions) => {
+          console.log({ values, actions });
+        }}
+      >
+        {({ errors, touched }) => (           
+          <Form>
+            <legend>Bem vindo</legend>
+            <h1>Adote por amor</h1>
+            
+            <p>
+              Aqui você encontra seu melhor amigo, que irá trazer um colorido diferente para sua vida.
+            </p>
 
-    <Authentication>
+            {(
+              (errors.email && touched.email) 
+              || (errors.password && touched.password)
+            ) ? (
+              <div id="errorGlobalMessage">
+                <span>
+                  Erro nas informações inseridas, tente novamente.
+                </span>
+              </div>
+            ) : (
+              <div>&nbsp;</div>
+            )}
 
-      <ContainerContent>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={SignUpSchema}
-          onSubmit={(values, actions) => {
-            console.log({ values, actions });
-          }}
-        >
-          {({ errors, touched }) => (           
-            <Form>
-              <legend>Bem vindo</legend>
-              <h1>Adote por amor</h1>
-              
-              <p>
-                Aqui você encontra seu melhor amigo, que irá trazer um colorido diferente para sua vida.
-              </p>
+            <Input 
+              icon={IconSigUp.BiUserCircle}
+              name="name" 
+              placeholderLabel="name" 
+              spellCheck={false}
+              isErrored={errors.name && touched.name}
+            />
 
-              {(
-                (errors.email && touched.email) 
-                || (errors.password && touched.password)
-              ) ? (
-                <div id="errorGlobalMessage">
-                  <span>
-                    Erro nas informações inseridas, tente novamente.
-                  </span>
-                </div>
-              ) : (
-                <div>&nbsp;</div>
-              )}
+            <Input 
+              icon={IconSigUp.GoMail}
+              name="email" 
+              placeholderLabel="E-mail" 
+              spellCheck={false}
+              isErrored={errors.email && touched.email}
+            />
 
-              <Input 
-                icon={IconSigUp.BiUserCircle}
-                name="name" 
-                placeholderLabel="name" 
-                spellCheck={false}
-                isErrored={errors.name && touched.name}
-              />
+            <Input
+              icon={IconSigUp.BsLock}
+              name="password"
+              placeholderLabel="Senha"
+              type="password"
+              isErrored={errors.password && touched.password}
+            />
 
-              <Input 
-                icon={IconSigUp.GoMail}
-                name="email" 
-                placeholderLabel="E-mail" 
-                spellCheck={false}
-                isErrored={errors.email && touched.email}
-              />
+            <Input
+              icon={IconSigUp.BsLock}
+              name="password_confirmation"
+              placeholderLabel="Confirmar Senha"
+              type="password" 
+              isErrored={
+                errors.password_confirmation 
+                && touched.password_confirmation
+              }
+            />
 
-              <Input
-                icon={IconSigUp.BsLock}
-                name="password"
-                placeholderLabel="Senha"
-                type="password"
-                isErrored={errors.password && touched.password}
-              />
+            <Input
+              icon={IconSigUp.FiPhoneCall}
+              name="phone"
+              placeholderLabel="Telefone"
+              type="phone"
+              isErrored={errors.phone && touched.phone} 
+            />
 
-              <Input
-                icon={IconSigUp.BsLock}
-                name="password_confirmation"
-                placeholderLabel="Confirmar Senha"
-                type="password" 
-                isErrored={
-                  errors.password_confirmation 
-                  && touched.password_confirmation
-                }
-              />
-
-              <Input
-                icon={IconSigUp.FiPhoneCall}
-                name="phone"
-                placeholderLabel="Telefone"
-                type="phone"
-                isErrored={errors.phone && touched.phone} 
-              />
-
-              <button type="submit">Cadastrar</button>
-            </Form>
-          )}
-        </Formik>
-      </ContainerContent>
-    </Authentication>
+            <button type="submit">Cadastrar</button>
+          </Form>
+        )}
+      </Formik>
+    </ContainerContent>
   );
 };
 
