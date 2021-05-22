@@ -27,7 +27,7 @@ function useToast() {
   const context = useContext(ToastContext);
 
   if (!context) {  
-    throw new Error('useAuth must be used within a Authentication')
+    throw new Error('useToast must be used within a Authentication')
   }
 
   return context

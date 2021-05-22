@@ -2,25 +2,29 @@ import Card from "../../components/Card";
 import { BsFilter } from "react-icons/bs";
 import { Footer } from "../../components/Footer";
 import { api } from "../../services/api";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { 
   Container, 
   ListFriends,
   ContainerSearchAnimal
 } from "./styles";
 
-interface Friend {
+interface Animal {
   id: number;
   name: string;
   age: number;
   photo: string;
   gender: "f" | "m";
+  images: Array<{
+    id: number;
+    url: string
+  }>
 }
 const Initial: React.FC = () => {
   const [active, setActive] = useState(true);
   const [filter, setFilter] = useState(false);
+  const [animals, setAnimals] = useState<Animal[]>();
 
-  const [animals, setAnimals] = useState<Friend[]>();
 
   useEffect(() => {
     api
@@ -114,6 +118,7 @@ const Initial: React.FC = () => {
                 name={animal.name} 
                 age={animal.age}
                 gender={animal.gender}
+                animal={animal}
               />
             )
           )}

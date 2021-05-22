@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProps extends React.HTMLProps<HTMLButtonElement> {}
+
+export const Container = styled.div<ContainerProps>`
   background: rgba(196, 196, 196, 0.18);
   border-radius: 0.3rem;
   width: 12.17rem;
