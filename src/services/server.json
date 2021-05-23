@@ -7,6 +7,7 @@
       "photo": "https://86cb8127dc14737f5057-7c0671222953158607ea93d5febd68b4.ssl.cf1.rackcdn.com/660/assets/responsive/489000/489354/dogingrass.jpg",
       "age": 1,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -28,6 +29,7 @@
       "photo": "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2015/03/12214810/so-you-want-to-breed-dogs-500x500.jpg",
       "age": "7",
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -49,6 +51,7 @@
       "photo": "https://i1.sndcdn.com/avatars-000560768412-fgpz9h-t500x500.jpg",
       "age": 1,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -70,6 +73,7 @@
       "photo": "https://procaes.org.br/wp-content/uploads/2019/07/NIKON-D5200992-2-500x500.jpg",
       "age": 3,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -91,6 +95,7 @@
       "photo": "https://cdn.shopify.com/s/files/1/1238/6620/products/Dots-on-Blue-Dog_600x.jpg?v=1537565193",
       "age": 6,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -112,6 +117,7 @@
       "photo": "https://yanhu3vvef11e7osn1qzldyb-wpengine.netdna-ssl.com/wp-content/uploads/2018/02/Frances-website-min-500x500.jpg",
       "age": 1,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -133,6 +139,7 @@
       "photo": "https://www.revistabula.com/wp/wp-content/uploads/2016/05/Gatos-610x350.jpg",
       "age": 4,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -154,6 +161,7 @@
       "photo": "https://i.pinimg.com/originals/75/31/23/753123d155120e874ed1e26aa87d5a55.png",
       "age": 4,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -175,6 +183,7 @@
       "photo": "https://procaes.org.br/wp-content/uploads/2019/07/DSC_0055-1-500x500.jpg",
       "age": 2,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -196,6 +205,7 @@
       "photo": "https://www.petz.com.br/blog/wp-content/uploads/2020/04/gato-idoso2.jpg",
       "age": 3,
       "gender": "f",
+      "type": "cat",
       "images": [
         {
           "id": 1,
@@ -217,6 +227,7 @@
       "photo": "https://www.pedigree.com.br/adotar/uploads/history/195313_5d8da1d7-bbff-4c59-a107-d8336bf3facf.jpg",
       "age": 5,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -238,6 +249,7 @@
       "photo": "https://i0.statig.com.br/bancodeimagens/do/dz/8r/dodz8rp9oahxqc9u53t96yiau.jpg",
       "age": 2,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -259,6 +271,7 @@
       "photo": "https://www.petz.com.br/blog/wp-content/uploads/2021/03/piercing-para-cachorro-2.jpg",
       "age": 3,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -280,6 +293,7 @@
       "photo": "https://media.gazetadopovo.com.br/viver-bem/2018/11/dog3-768x587-0e01be20.jpg",
       "age": 6,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -301,6 +315,7 @@
       "photo": "https://medias.cnnbrasil.com.br/cachorro.jpeg?format=JPEG&image=https://mediastorage.cnnbrasil.com.br/IMAGES/00/00/01/16910_E845ABA4B69EFCF8.jpeg&width=804&height=452&resize=CROP",
       "age": 3,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -322,6 +337,7 @@
       "photo": "https://t1.ea.ltmcdn.com/pt/images/1/2/5/img_adotar_um_cachorro_adulto_conselhos_e_recomendacoes_8521_orig.jpg",
       "age": 1,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -343,6 +359,7 @@
       "photo": "https://meusanimais.com.br/wp-content/uploads/2017/12/adotar-um-filhote-de-cachorro.jpg",
       "age": 3,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -364,6 +381,7 @@
       "photo": "https://www.plural.jor.br/wp-content/uploads/2021/01/dog-3277416__340.jpg",
       "age": 3,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -385,6 +403,7 @@
       "photo": "https://ggsc.s3.amazonaws.com/images/uploads/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpg",
       "age": 3,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -406,6 +425,7 @@
       "photo": "https://moderndogmagazine.com/sites/default/files/styles/slidehsow-banner/public/images/articles/top_images/Header_206.jpg?itok=4ttMMleH",
       "age": 3,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -427,6 +447,7 @@
       "photo": "https://cdn.britannica.com/05/30105-131-8C0DB5A5/English-bulldog.jpg",
       "age": 3,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -448,6 +469,7 @@
       "photo": "https://cdn.britannica.com/05/30105-131-8C0DB5A5/English-bulldog.jpg",
       "age": 3,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -469,6 +491,7 @@
       "photo": "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-1100x628.jpg",
       "age": 3,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -490,6 +513,7 @@
       "photo": "https://i.pinimg.com/564x/a7/52/6c/a7526c96d7a80d6983c93c6c897d364f.jpg",
       "age": 3,
       "gender": "f",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -511,6 +535,7 @@
       "photo": "https://i.pinimg.com/564x/ed/89/ff/ed89ffcff7e72dacde58fa1d9cbe6b79.jpg",
       "age": 2,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -532,6 +557,7 @@
       "photo": "https://i.pinimg.com/564x/45/3d/02/453d02244b53dad6b32721257754bae4.jpg",
       "age": 2,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -553,6 +579,7 @@
       "photo": "https://i.pinimg.com/564x/d4/3d/73/d43d73bb46f5a207fde2ff625955c454.jpg",
       "age": 2,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,
@@ -574,6 +601,7 @@
       "photo": "https://i.pinimg.com/236x/c4/fb/ef/c4fbef5be9451b3060f5838e196accb5.jpg",
       "age": 2,
       "gender": "m",
+      "type": "dog",
       "images": [
         {
           "id": 1,

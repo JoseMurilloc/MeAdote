@@ -23,13 +23,19 @@ interface Animal {
 const Initial: React.FC = () => {
   const [active, setActive] = useState(true);
   const [filter, setFilter] = useState(false);
-  const [animals, setAnimals] = useState<Animal[]>();
+  const [dogs, setDogs] = useState<Animal[]>();
+  const [cats, setCats] = useState<Animal[]>();
 
 
   useEffect(() => {
     api
       .get("/animals")
-      .then((response) => setAnimals(response.data))
+      .then((response) => {
+        const dogsResponse = response.data.filter(animal => animal.type === 'dog')
+        const catsResponse = response.data.filter(animal => animal.type === 'cat')
+        setDogs(dogsResponse)
+        setCats(catsResponse)
+      })
       .catch((error) => console.log(error));
   }, []);
 
@@ -110,16 +116,31 @@ const Initial: React.FC = () => {
         )}
 
         <ListFriends>
-          {animals?.map(
-            (animal) => (
-              <Card
-                photo={animal.photo}
-                key={animal.id}
-                name={animal.name} 
-                age={animal.age}
-                gender={animal.gender}
-                animal={animal}
-              />
+          {active ? (
+            dogs?.map(
+              (animal) => (
+                <Card
+                  photo={animal.photo}
+                  key={animal.id}
+                  name={animal.name} 
+                  age={animal.age}
+                  gender={animal.gender}
+                  animal={animal}
+                />
+              )
+            )
+          ) : (
+            cats?.map(
+              (animal) => (
+                <Card
+                  photo={animal.photo}
+                  key={animal.id}
+                  name={animal.name} 
+                  age={animal.age}
+                  gender={animal.gender}
+                  animal={animal}
+                />
+              )
             )
           )}
         </ListFriends>

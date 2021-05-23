@@ -10,6 +10,7 @@ export type Animal = {
   name: string;
   age: number;
   gender: string;
+  type?: string;
   photo: string;
   images: Array<{
     id: number;

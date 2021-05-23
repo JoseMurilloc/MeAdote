@@ -32,16 +32,10 @@ const DetailsAnimalModal: React.FC<DetailsAnimalModalProps> = ({animal, onOpen, 
       </button>
       <div className="containerFlex">
         <div className="containerImages">
-          {animal?.images[activeIndexImage]?.url  !== undefined? (
-            <img 
-              src={animal.images[activeIndexImage]?.url} 
-              alt={animal.name}/>
-          ) : (
-            <img 
-              src="https://st2.depositphotos.com/12093440/44102/v/600/depositphotos_441020378-stock-illustration-page-404-link-to-non.jpg"
-              alt="404"
-            />
-          )}  
+          <img 
+            src={animal.images[activeIndexImage]?.url} 
+            alt={animal.name}
+          />
           <div className="images">
               {animal?.images.map((image, index) => (
                 <button 
@@ -59,16 +53,22 @@ const DetailsAnimalModal: React.FC<DetailsAnimalModalProps> = ({animal, onOpen, 
           <h1>{animal.name}</h1>
           <div className="description">
             <p>
-              Modéstia à parte, eu não sou linda? Meu nome é Sofia e eu adoro brincar. Tudo o que eu mais quero é encontrar uma família que me ame e se importe comigo. Quer me adotar?
+              Modéstia à parte, eu não sou linda? Meu nome é {`${animal.name}`} e eu adoro brincar. Tudo o que eu mais quero é encontrar uma família que me ame e se importe comigo. Quer me adotar?
             </p>
           </div>
           <div className="infoPetCards">
-            <aside>Cadastrada</aside>
-            <aside className="yellow-gradient">Vacinada</aside>
+            <aside>
+              Cadastrada
+            </aside>
+            <aside className="yellow-gradient">
+              Vacinada
+            </aside>
             <aside className="red-gradient">
               {animal.gender === 'f' ? 'Femêa' : 'Macho'}
             </aside>
-            <aside className="green-gradient">{`${animal.age} ano`}</aside>
+            <aside className="green-gradient">
+              {`${animal.age} ano`}
+            </aside>
           </div>
           <div className="detailsPerson">
             <h3>Comportamento:</h3>
