@@ -10,8 +10,8 @@ interface CardProps {
   photo?: string
   name: string;
   age: number;
-  gender: 'f' | 'm';
-  animal: Animal;
+  gender: string;
+  animal?: Animal;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -22,7 +22,6 @@ const Card: React.FC<CardProps> = ({
   animal
 }) => {
   const {handleClickAppendAnimal} = useModal()
-
   return (
     <button 
       onClick={() => handleClickAppendAnimal(animal)} 

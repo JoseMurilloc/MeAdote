@@ -285,6 +285,8 @@ export const AdoptionFriend = styled.section`
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;  
     grid-gap: 0.93rem;
+    height: 70%;
+
 
     @media (max-width: 1190px) {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

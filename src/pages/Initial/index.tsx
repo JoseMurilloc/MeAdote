@@ -23,9 +23,9 @@ interface Animal {
 const Initial: React.FC = () => {
   const [active, setActive] = useState(true);
   const [filter, setFilter] = useState(false);
+
   const [dogs, setDogs] = useState<Animal[]>();
   const [cats, setCats] = useState<Animal[]>();
-
 
   useEffect(() => {
     api
@@ -42,6 +42,29 @@ const Initial: React.FC = () => {
   const handleChangeFilter = useCallback(() => {
     setFilter(state => !state)
   }, [])
+
+  async function handleGenderAnimal(gender: string) {
+    try {
+      const response = await api.get('/animals', {
+        params: {
+          gender,
+          type: active ? 'dog' : 'cat'
+        }
+      })
+
+      if (active) {
+        setDogs(response.data)
+      } else {
+        setCats(response.data)
+      }
+    } catch(err) {
+      console.error(err)
+    }
+  }
+
+  function handleChangeGender() {
+    setActive((state) => !state)
+  }
 
   return (
     <>
@@ -60,13 +83,13 @@ const Initial: React.FC = () => {
           <div>
             <span
               className={active ? "active" : ""}
-              onClick={() => setActive((state) => !state)}
+              onClick={handleChangeGender}
             >
               Cachorro
             </span>
             <span
               className={!active ? "active" : ""} 
-              onClick={() => setActive((state) => !state)}
+              onClick={handleChangeGender}
             >
               Gato
             </span>
@@ -78,39 +101,42 @@ const Initial: React.FC = () => {
         </div>
         { filter && (
           <ContainerSearchAnimal>
-           <select id="cars">
-            <option value="" disabled selected>
-             Sexo
-            </option>
-             <option value="volvo">Masculino</option>
-             <option value="saab">Feminino</option>
-           </select>
+            <select 
+              id="sexy"
+              onChange={e => handleGenderAnimal(e.target.value)}
+            >
+              <option value="" disabled selected>
+                Sexo
+              </option>
+              <option value="m">Masculino</option>
+              <option value="f">Feminino</option>
+            </select>
  
-           <select id="cars">
-            <option value="" disabled selected>
-             Porte
-            </option>
-             <option value="volvo">Pequeno</option>
-             <option value="saab">Medio</option>
-             <option value="opel">Grande</option>
-           </select>
+            <select id="port">
+              <option value="" disabled selected>
+                Porte
+              </option>
+              <option value="small">Pequeno</option>
+              <option value="medium">Medio</option>
+              <option value="large">Grande</option>
+            </select>
  
-           <select id="cars">
+           <select id="age">
               <option value="" disabled selected>
                 Idade
               </option>
-             <option value="volvo">1</option>
-             <option value="saab">2</option>
-             <option value="opel">3</option>
-             <option value="audi">4+</option>
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4+">4+</option>
            </select>
  
-           <select id="cars">
+           <select id="need-specials">
               <option value="" disabled selected>
                 Necessidades especiais
               </option>
-             <option value="volvo">Sim</option>
-             <option value="saab">Não</option>
+             <option value="Sim">Sim</option>
+             <option value="Não">Não</option>
            </select>
          </ContainerSearchAnimal>
         )}

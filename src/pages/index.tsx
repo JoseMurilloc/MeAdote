@@ -14,18 +14,11 @@ import { GetServerSideProps } from 'next';
 import { Header } from '../components/Header';
 import { useEffect, useState } from 'react';
 import { api } from '../services/api';
-
-interface Friend {
-  id: number;
-  name: string;
-  age: number;
-  photo: string;
-  gender: 'f' | 'm';
-}
+import { Animal } from '../hooks/types/modal';
 
 export default function Home() {
 
-  const [animal, setAnimal] = useState<Friend[]>();
+  const [animal, setAnimal] = useState<Animal[]>();
 
   useEffect(() =>{
     api.get('/animals?_page=1&_limit=12')
@@ -34,7 +27,7 @@ export default function Home() {
       })
       .catch(err => console.error(err))
   }, [])
-
+    
   return (
     <>
       <Head>
@@ -136,14 +129,17 @@ export default function Home() {
             </button>
           </div>
           <aside>
-              {animal?.map(friend => (
-                <Card 
-                  photo={friend.photo}
-                  key={friend.id}
-                  name={friend.name} 
-                  age={friend.age}
-                  gender={friend.gender}
-                />
+              {animal?.map(animal => (
+                <div>
+                  <Card 
+                    photo={animal.photo}
+                    key={animal.id}
+                    name={animal.name} 
+                    age={animal.age}
+                    gender={animal.gender}
+                    animal={animal}
+                  />
+                </div>
               ))}
           </aside>
         </AdoptionFriend>
