@@ -10,7 +10,6 @@ import { Footer } from '../components/Footer'
 import { IconHome } from '../utils/icons'
 
 import Card from '../components/Card';
-import { GetServerSideProps } from 'next';
 import { Header } from '../components/Header';
 import { useEffect, useState } from 'react';
 import { api } from '../services/api';
@@ -143,7 +142,9 @@ export default function Home() {
               ))}
           </aside>
         </AdoptionFriend>
-        <Footer />
+        <div style={{marginTop: '100hw',  scrollSnapAlign: 'start'}}>
+          <Footer />
+        </div>
       </Container>
     </>
   )
