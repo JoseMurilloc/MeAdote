@@ -44,7 +44,7 @@ export default createGlobalStyle`
 
   body {
     font-family: 'Inter', sans-serif;
-    background: #FEF3EF;    
+    background-color: #f9f5f5;
   }
   * {
     box-sizing: inherit;
