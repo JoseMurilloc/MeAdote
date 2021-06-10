@@ -5,8 +5,8 @@ export const Container = styled.header`
   position: fixed;
   width: 100%;
   z-index: 1;
-  background: linear-gradient(#FFF2F0, #FDF0F0, #FDF0F0); 
-
+  background-color: #f9f5f5;
+  background: linear-gradient(#f9f5f5, #FDF0F0, #f9f5f5); 
 
   div.content {
     display: flex;

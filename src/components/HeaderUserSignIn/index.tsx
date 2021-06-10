@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import React, { useCallback, useState } from 'react';
-import { AiFillHeart } from 'react-icons/ai';
+import Image from 'next/image';
+import { RiUserHeartLine } from 'react-icons/ri';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { HiUserCircle } from 'react-icons/hi';
 import { ImExit } from 'react-icons/im';
@@ -25,8 +25,8 @@ const HeaderUserSignIn: React.FC = () => {
       />
 
       <Content>
-        <div>
-          <AiFillHeart color="#D20637" size={25} />
+        <div className="containerFavorite">
+          <RiUserHeartLine color="#2E3A59" size={20} />
           <span style={{marginTop: 6}} >Preferidos</span>
         </div>
 
@@ -35,12 +35,14 @@ const HeaderUserSignIn: React.FC = () => {
             className="profile" 
             onClick={handleToggleMenu} 
           >
-            <Image 
-              src="/images/profile.png" 
-              alt="Profile"
-              width="38px"
-              height="38px"
-            />
+            <div className="containerProfile">
+              <Image 
+                src="/images/profile.png" 
+                alt="Profile"
+                width="38px"
+                height="38px"
+              />
+            </div>
             <span>{user?.name}</span>
           </div>
           <div 

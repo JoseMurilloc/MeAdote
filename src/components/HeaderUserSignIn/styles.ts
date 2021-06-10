@@ -18,15 +18,21 @@ export const Content = styled.div`
   justify-content: center;
   align-items: center;
 
-  > div {
+  > div.containerFavorite {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+   
+    height: 2.8rem;
+    background: rgba(196, 196, 196, 0.19);
+    border-radius: 0.4rem;
+    padding: 0.6rem 1rem 0.6rem 0.8667rem;
 
     span { 
-      font-size: 0.934rem;
-      line-height: 1.134rem;
-      color: rgba(57, 58, 58, 0.7);
+      margin-left: 0.4667rem;
+      font-size: 0.9333rem;
+      line-height: 1.1333rem;
+      color: #2E3A59;
     }
   }
 
@@ -39,15 +45,30 @@ export const ActionUser = styled.div`
   position: relative;
   div.profile {
     display: flex;
-    flex-direction: column;
     align-items: center;
     cursor: pointer;
+
+    height: 42px;
+    background: rgba(196, 196, 196, 0.19);
+    border-radius: 6px;
+    padding: 9px 15px 9px 13px;
     
-    img {
+    div.containerProfile  {
+      width: 24px;
+      height: 24px;
+      border: 1px solid #BB506A;
       border-radius: 50%;
+      margin-right: 5px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
     }
     span {
-      margin-top: 2px;
+      font-size: 14px;
+      color: #2E3A59;
     }
   }
 
