@@ -44,7 +44,7 @@ export const SociaisContainer = styled.div`
 
 export const ContactContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
   padding: 1.6667rem;
   min-width: 33.3333rem;
@@ -56,11 +56,11 @@ export const ContactContainer = styled.div`
 
     align-items: flex-start;
     justify-content: center;
-    
+ 
   }
 
   span + span {
-    margin-top: 7px;
+    margin-top: 0.4667rem;
   }
 
   span {
@@ -72,9 +72,10 @@ export const ContactContainer = styled.div`
     font-size: 1.06rem;
     line-height: 1.26rem;
     letter-spacing: 0.015em;
+
     
-    svg {
-      margin-right: 7px;
+    img {
+      margin-right: 10px;
     }
   }
 

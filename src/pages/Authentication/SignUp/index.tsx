@@ -50,7 +50,7 @@ const SignUp: React.FC = () => {
             )}
 
             <Input 
-              icon={IconSigUp.BiUserCircle}
+              icon="user/user_circle.svg"
               name="name" 
               placeholderLabel="name" 
               spellCheck={false}
@@ -58,7 +58,7 @@ const SignUp: React.FC = () => {
             />
 
             <Input 
-              icon={IconSigUp.GoMail}
+              icon="basic/mail.svg"
               name="email" 
               placeholderLabel="E-mail" 
               spellCheck={false}
@@ -66,7 +66,7 @@ const SignUp: React.FC = () => {
             />
 
             <Input
-              icon={IconSigUp.BsLock}
+              icon="basic/lock.svg"
               name="password"
               placeholderLabel="Senha"
               type="password"
@@ -74,7 +74,7 @@ const SignUp: React.FC = () => {
             />
 
             <Input
-              icon={IconSigUp.BsLock}
+              icon="basic/lock.svg"
               name="password_confirmation"
               placeholderLabel="Confirmar Senha"
               type="password" 
@@ -85,7 +85,7 @@ const SignUp: React.FC = () => {
             />
 
             <Input
-              icon={IconSigUp.FiPhoneCall}
+              icon="basic/call_phone.svg"
               name="phone"
               placeholderLabel="Telefone"
               type="phone"

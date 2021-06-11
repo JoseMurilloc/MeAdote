@@ -75,7 +75,7 @@ const SignIn: React.FC = () => {
             
 
             <Input 
-              icon={IconSigIn.GoMail}
+              icon="user/user_circle.svg"
               name="email" 
               type="email"
               placeholderLabel="E-mail" 
@@ -84,7 +84,7 @@ const SignIn: React.FC = () => {
             />
 
             <Input
-              icon={IconSigIn.BsLock}
+              icon="basic/lock.svg"
               name="password"
               placeholderLabel="Senha"
               type="password" 

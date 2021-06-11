@@ -43,7 +43,7 @@ export const ContainerContent = styled.div`
       color: #393A3A;
       width: 270px;
       height: 51px;
-      margin-bottom: 24px; 
+      margin-bottom: 12px; 
     }
 
     div#errorGlobalMessage {

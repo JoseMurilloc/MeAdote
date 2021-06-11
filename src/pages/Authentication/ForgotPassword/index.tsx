@@ -43,7 +43,7 @@ const ForgotPassword: React.FC = () => {
                 )}
 
                 <Input 
-                  icon={IconForgotPassword.GoMail}
+                  icon="basic/mail.svg"
                   name="email" 
                   type="email"
                   placeholderLabel="E-mail"

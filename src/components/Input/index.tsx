@@ -10,7 +10,7 @@ import { Container } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  icon: IconType;
+  icon: string;
   containerStyle?: object;
   placeholderLabel: string;
   isErrored?: boolean;
@@ -21,7 +21,7 @@ const Input: React.FC<InputProps> = (
     name,
     placeholderLabel,
     containerStyle = {},
-    icon: Icon, 
+    icon, 
     isErrored = false,
     ...rest
   }
@@ -54,10 +54,7 @@ const Input: React.FC<InputProps> = (
       isFocus={isFocus}
       isErrored={isErrored}
     >
-      <Icon 
-        color={isErrored ? "#E10C40" : "#393A30"} 
-        size="1.66rem"
-      />
+      <img src={`/icons/${icon}`} alt="" />
       <Field
         id={name}
         name={name}

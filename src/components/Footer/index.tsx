@@ -22,13 +22,19 @@ export function Footer() {
         </SociaisContainer>
         <ContactContainer>
          <div>
-            <span>Contato</span>
-            <span>
-              <ImPhone color="#FFF" />
+            <span style={{marginBottom: '20px'}}>Contato</span>
+            <span style={{marginBottom: '14px'}}>
+              <img 
+                src="/icons/basic/call_phone_light.svg" 
+                alt="Call phone icon" 
+              />
               (87) 988422864
             </span>
             <span>
-              <IoMdMail color="#FFF" />
+              <img 
+                src="/icons/basic/mail_light.svg" 
+                alt="Mail icon" 
+              />
               Meadotadog@gmail.com
             </span>
          </div>
