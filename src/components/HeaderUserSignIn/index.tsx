@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import Image from 'next/image';
-import { RiUserHeartLine } from 'react-icons/ri';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { HiUserCircle } from 'react-icons/hi';
 import { ImExit } from 'react-icons/im';
@@ -26,7 +25,7 @@ const HeaderUserSignIn: React.FC = () => {
 
       <Content>
         <div className="containerFavorite">
-          <RiUserHeartLine color="#2E3A59" size={20} />
+          <img src="/icons/user/user_heart.svg" alt="Heart user" />
           <span style={{marginTop: 6}} >Preferidos</span>
         </div>
 
@@ -36,14 +35,18 @@ const HeaderUserSignIn: React.FC = () => {
             onClick={handleToggleMenu} 
           >
             <div className="containerProfile">
-              <Image 
-                src="/images/profile.png" 
-                alt="Profile"
-                width="38px"
-                height="38px"
-              />
+              {user ? (
+                <Image 
+                  src="/images/profile.png" 
+                  alt="Profile"
+                  width="38px"
+                  height="38px"
+                />
+              ): (
+                <img src="/icons/user/user_circle_o.svg" alt="User" />
+              )}
             </div>
-            <span>{user?.name}</span>
+            <span>{user ? user.name : 'Entrar'}</span>
           </div>
           <div 
             className={toggleMenu ? 'menu active': 'menu'}

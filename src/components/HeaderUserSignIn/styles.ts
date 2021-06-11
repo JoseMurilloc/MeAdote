@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   max-width: 78.8rem;
@@ -41,7 +41,11 @@ export const Content = styled.div`
   }
 `;
 
-export const ActionUser = styled.div`
+type ActionUserProps = {
+  userLogin?: boolean;
+}
+
+export const ActionUser = styled.div<ActionUserProps>`
   position: relative;
   div.profile {
     display: flex;
@@ -56,7 +60,9 @@ export const ActionUser = styled.div`
     div.containerProfile  {
       width: 24px;
       height: 24px;
-      border: 1px solid #BB506A;
+      ${props => props.userLogin && css`
+        border: 1px solid #BB506A;
+      `}
       border-radius: 50%;
       margin-right: 5px;
     }
