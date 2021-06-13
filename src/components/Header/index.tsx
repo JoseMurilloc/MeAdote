@@ -1,6 +1,9 @@
+import { useRouter } from 'next/router';
 import { Container } from './styles';
 
 export function Header() {
+  const router = useRouter()
+
   return (
     <Container>
       <div className="content">
@@ -28,10 +31,16 @@ export function Header() {
         </nav>
 
         <aside>
-          <button id="openButton">
+          <button 
+            id="openButton" 
+            onClick={() => router.push('/Authentication/SignIn')}
+          >
             Entrar
           </button> 
-          <button id="registerButton">
+          <button 
+            id="registerButton"
+            onClick={() => router.push('/Authentication/SignUp')}
+          >
             Cadastrar
           </button>
         </aside>
