@@ -26,7 +26,7 @@ const HeaderUserSignIn: React.FC = () => {
       <Content>
         <div className="containerFavorite">
           <img src="/icons/user/user_heart.svg" alt="Heart user" />
-          <span style={{marginTop: 6}} >Preferidos</span>
+          <span>Preferidos</span>
         </div>
 
         <ActionUser>
