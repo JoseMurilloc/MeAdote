@@ -15,7 +15,12 @@ export const Container = styled.header`
 
     padding-top: 0.6rem;
     max-width: 81rem;
-    margin: 0 auto;   
+    margin: 0 auto;
+
+    img {
+      height: 3.7333rem;
+      width: 3.7333rem;
+    }
   }
 
   div.content nav ul { 

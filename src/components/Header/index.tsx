@@ -7,6 +7,7 @@ export function Header() {
         <img 
           src="/images/MeAdotaLogo.svg" 
           alt="Logo page"
+          className="MeAdotaLogo"
         />
 
         <nav>

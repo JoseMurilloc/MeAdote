@@ -17,10 +17,10 @@ const HeaderUserSignIn: React.FC = () => {
 
   return (
     <Container>
-      <Image
-        src="/images/MeAdotaLogo.svg"
-        width="56px"
-        height="54px"
+      <img 
+        src="/images/MeAdotaLogo.svg" 
+        alt="Logo MeAdota" 
+        className="LogoMeAdote"
       />
 
       <Content>

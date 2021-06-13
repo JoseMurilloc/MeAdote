@@ -7,7 +7,7 @@ export const Container = styled.div`
     margin-top: 3.9333rem;
     width: 45.7333rem;
 
-    h1 { 
+    h1 {
       font-weight: bold;
       font-size: 2.6667rem;
       line-height: 4rem;
@@ -15,7 +15,7 @@ export const Container = styled.div`
       font-family: 'Poppins', sans-serif;
     }
 
-    p { 
+    p {
       font-size: 1.0667rem;
       line-height: 1.2667rem;
       text-align: justify;

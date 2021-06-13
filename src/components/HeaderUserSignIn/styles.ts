@@ -1,15 +1,18 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 78.8rem;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6667rem 0;
+  padding: 0.4667rem 5.86rem;
+
+  img.LogoMeAdote {
+    width: 3.7333rem;
+    height: 3.7333rem;
+  }
 
   @media (max-width: 945px) {
-    max-width: 48rem;
+    max-width: 80rem;
   }
 `;
 
@@ -53,14 +56,14 @@ export const ActionUser = styled.div<ActionUserProps>`
     align-items: center;
     cursor: pointer;
 
-    height: 42px;
+    height: 2.8rem;
     background: rgba(196, 196, 196, 0.19);
-    border-radius: 6px;
-    padding: 9px 15px 9px 13px;
+    border-radius: 0.4rem;
+    padding: 0.6rem 1rem 0.6rem 0.8667rem;
     
     div.containerProfile  {
-      width: 24px;
-      height: 24px;
+      width: 1.6rem;
+      height: 1.6rem;
       ${props => props.userLogin && css`
         border: 1px solid #BB506A;
       `}
