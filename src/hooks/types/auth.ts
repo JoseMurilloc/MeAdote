@@ -3,6 +3,7 @@ export interface User {
   email: string;
   password?: string;
 }
+export const KEY_TOKEN = '@meadote.token'
 
 export interface AuthState {
   token: string;
@@ -18,7 +19,6 @@ export interface AuthContextData {
   user: User;
   isAuthenticated: boolean;
 
-  sigIn(credentials: Credentials): Promise<void>;
-  sigOut(): void;
-  updatedAvatar(user: User): void;
+  signIn(credentials: Credentials): Promise<void>;
+  signOut(): void;
 }

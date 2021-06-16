@@ -1,15 +1,16 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { HiUserCircle } from 'react-icons/hi';
 import { ImExit } from 'react-icons/im';
 import { IoMdHelpCircle } from 'react-icons/io';
-import { useAuth } from '../../hooks/AuthContext';
 import { ActionUser, Container, Content } from './styles';
+import { useAuth } from '../../hooks/AuthContext';
 
 const HeaderUserSignIn: React.FC = () => {
-  const { user } = useAuth()
   const [toggleMenu, setToggleMenu] = useState(false);
+
+  const { user, isAuthenticated } = useAuth()
   
   const handleToggleMenu = useCallback(() => {
     setToggleMenu(state => !state)
@@ -35,7 +36,7 @@ const HeaderUserSignIn: React.FC = () => {
             onClick={handleToggleMenu} 
           >
             <div className="containerProfile">
-              {user ? (
+              {isAuthenticated ? (
                 <Image 
                   src="/images/profile.png" 
                   alt="Profile"
@@ -46,7 +47,7 @@ const HeaderUserSignIn: React.FC = () => {
                 <img src="/icons/user/user_circle_o.svg" alt="User" />
               )}
             </div>
-            <span>{user ? user.name : 'Entrar'}</span>
+            <span>{isAuthenticated ? user.name : 'Entrar'}</span>
           </div>
           <div 
             className={toggleMenu ? 'menu active': 'menu'}

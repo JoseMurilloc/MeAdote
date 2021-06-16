@@ -6,11 +6,14 @@ import React, {
   useState 
 } from "react";
 import { useContext } from "react";
-import { Authentication } from "../pages/Authentication";
-import { api, apiAdonis } from "../services/api";
+import api from "../services/api";
+import { destroyCookie, parseCookies, setCookie } from 'nookies';
+import Router from 'next/router';
+
 import { 
   AuthContextData, 
-  AuthState, 
+  Credentials, 
+  KEY_TOKEN, 
   User 
 } from "./types/auth";
 
@@ -18,67 +21,71 @@ const AuthContext = createContext<AuthContextData>(
   {} as AuthContextData
 );
 
+export function signOut() {
+  destroyCookie(undefined, KEY_TOKEN)
+  Router.push('/')
+}
+
+
 const AuthProvider: React.FC = ({ children }) => {
-  const [data, setData] = useState<AuthState>({} as AuthState);
-  const isAuthenticated = !!data.user
+  const [user, setUser] = useState<User>({} as User);
+  const isAuthenticated = verifyIsAuthenticatedUser()
   
   useEffect(() => {
-    const user = localStorage.getItem('@MeAdota:user')
-    const token = localStorage.getItem('@MeAdota:token')
-    
-    const dataFormat = {
-      user: JSON.parse(user) as User,
-      token: token
+    const { '@meadote.token': token } = parseCookies()
+
+    if (token) {
+      api.get('me')
+        .then(response => {
+          const { email, name } = response.data
+          setUser({
+            email,
+            name
+          })
+        })
+        .catch(() => {
+          signOut()
+        })
     }
-
-    setData(dataFormat)
   }, [])
 
-  const sigIn = useCallback(async ({email, password}) => {
+  function verifyIsAuthenticatedUser(): boolean {
+    return Object.keys(user).length === 0 ? false : true
+  }
 
-    const response = await apiAdonis.post('/sessions', {
-      email,
-      password
-    })
+  async function signIn({email, password}: Credentials) {
+    
+    try { 
+      const response = await api.post('/sessions', { 
+        email,
+        password
+      })
 
-    const { token, user } = response.data;
+      const { token, user } = response.data
 
-    localStorage.setItem('@MeAdota:token', token);
-    localStorage.setItem('@MeAdota:user', JSON.stringify(user));
+      setCookie(undefined, KEY_TOKEN ,token, {
+        maxAge: 60 * 60 * 24 * 30, // 30 days
+        path: '/'
+      })
 
-    api.defaults.headers.authorization = `Bearer ${token}`;
-    apiAdonis.defaults.headers.authorization = `Bearer ${token}`;
+      api.defaults.headers['Authorization'] = `Bearer ${token}`
 
-    setData({ token, user });
+      setUser({
+        email: user.email,
+        name: user.name
+      })
 
-  }, [])
-
-
-  const sigOut = useCallback(() => {
-
-    localStorage.removeItem('@MeAdota:token');
-    localStorage.removeItem('@MeAdota:user');
-
-    setData({ } as AuthState);
-  }, [])
-
-  const updatedAvatar = useCallback(async(user: User) => {
-    localStorage.setItem('@GBB:user', JSON.stringify(user));
-
-    setData({
-      token: data.token,
-      user,
-    })
-  }, [setData, data.token])
-
-  const router = useRouter()
+      Router.push('/initial')
+    } catch(error) {
+      console.error(error)
+    }
+  }
 
   return (
     <AuthContext.Provider value={{ 
-      user: data.user, 
-      sigIn,
-      sigOut,
-      updatedAvatar,
+      user, 
+      signIn,
+      signOut,
       isAuthenticated
     }}>
       {children}

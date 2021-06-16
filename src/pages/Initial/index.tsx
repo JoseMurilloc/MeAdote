@@ -1,69 +1,65 @@
+import React, { useCallback, useEffect, useState } from "react";
 import Card from "../../components/Card";
 import { BsFilter } from "react-icons/bs";
 import { Footer } from "../../components/Footer";
-import { api } from "../../services/api";
-import React, { useCallback, useEffect, useState } from "react";
+import api from "../../services/api";
 import { 
   Container, 
-  ListFriends,
+  ListFriends, 
   ContainerSearchAnimal
 } from "./styles";
+import data from "../../services/server.json";
+import { Pet } from "./types";
+import { WithAuth } from "../../utils/withAuth";
 
-interface Animal {
-  id: number;
-  name: string;
-  age: number;
-  photo: string;
-  gender: "f" | "m";
-  images: Array<{
-    id: number;
-    url: string
-  }>
-}
 const Initial: React.FC = () => {
   const [active, setActive] = useState(true);
   const [filter, setFilter] = useState(false);
 
-  const [dogs, setDogs] = useState<Animal[]>();
-  const [cats, setCats] = useState<Animal[]>();
+  const [dogs, setDogs] = useState<Pet[]>();
+  const [cats, setCats] = useState<Pet[]>();
 
   useEffect(() => {
-    api
-      .get("/animals")
-      .then((response) => {
-        const dogsResponse = response.data.filter(animal => animal.type === 'dog')
-        const catsResponse = response.data.filter(animal => animal.type === 'cat')
-        setDogs(dogsResponse)
-        setCats(catsResponse)
-      })
-      .catch((error) => console.log(error));
+    
+    const dataConvertAgeToNumber = data.animals.map(pet => {
+      return ({...pet, age: Number(pet.age)})
+    })
+
+    const dogsResponse = dataConvertAgeToNumber.filter((animal) => 
+      animal.type === "dog"
+    );
+    const catsResponse = dataConvertAgeToNumber.filter((animal) => 
+      animal.type === "cat"
+    );
+    setDogs(dogsResponse);
+    setCats(catsResponse);
   }, []);
 
   const handleChangeFilter = useCallback(() => {
-    setFilter(state => !state)
-  }, [])
+    setFilter((state) => !state);
+  }, []);
 
   async function handleGenderAnimal(gender: string) {
     try {
-      const response = await api.get('/animals', {
+      const response = await api.get("/animals", {
         params: {
           gender,
-          type: active ? 'dog' : 'cat'
-        }
-      })
+          type: active ? "dog" : "cat",
+        },
+      });
 
       if (active) {
-        setDogs(response.data)
+        setDogs(response.data);
       } else {
-        setCats(response.data)
+        setCats(response.data);
       }
-    } catch(err) {
-      console.error(err)
+    } catch (err) {
+      console.error(err);
     }
   }
 
   function handleChangeGender() {
-    setActive((state) => !state)
+    setActive((state) => !state);
   }
 
   return (
@@ -88,7 +84,7 @@ const Initial: React.FC = () => {
               Cachorro
             </span>
             <span
-              className={!active ? "active" : ""} 
+              className={!active ? "active" : ""}
               onClick={handleChangeGender}
             >
               Gato
@@ -99,11 +95,11 @@ const Initial: React.FC = () => {
             <span>Filtrar</span>
           </button>
         </div>
-        { filter && (
+        {filter && (
           <ContainerSearchAnimal>
-            <select 
+            <select
               id="sexy"
-              onChange={e => handleGenderAnimal(e.target.value)}
+              onChange={(e) => handleGenderAnimal(e.target.value)}
             >
               <option value="" disabled selected>
                 Sexo
@@ -111,7 +107,7 @@ const Initial: React.FC = () => {
               <option value="m">Masculino</option>
               <option value="f">Feminino</option>
             </select>
- 
+
             <select id="port">
               <option value="" disabled selected>
                 Porte
@@ -120,55 +116,49 @@ const Initial: React.FC = () => {
               <option value="medium">Medio</option>
               <option value="large">Grande</option>
             </select>
- 
-           <select id="age">
+
+            <select id="age">
               <option value="" disabled selected>
                 Idade
               </option>
-             <option value="1">1</option>
-             <option value="2">2</option>
-             <option value="3">3</option>
-             <option value="4+">4+</option>
-           </select>
- 
-           <select id="need-specials">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4+">4+</option>
+            </select>
+
+            <select id="need-specials">
               <option value="" disabled selected>
                 Necessidades especiais
               </option>
-             <option value="Sim">Sim</option>
-             <option value="Não">Não</option>
-           </select>
-         </ContainerSearchAnimal>
+              <option value="Sim">Sim</option>
+              <option value="Não">Não</option>
+            </select>
+          </ContainerSearchAnimal>
         )}
 
         <ListFriends>
-          {active ? (
-            dogs?.map(
-              (animal) => (
+          {active
+            ? dogs?.map((animal) => (
                 <Card
                   photo={animal.photo}
                   key={animal.id}
-                  name={animal.name} 
+                  name={animal.name}
                   age={animal.age}
                   gender={animal.gender}
                   animal={animal}
                 />
-              )
-            )
-          ) : (
-            cats?.map(
-              (animal) => (
+              ))
+            : cats?.map((animal) => (
                 <Card
                   photo={animal.photo}
                   key={animal.id}
-                  name={animal.name} 
+                  name={animal.name}
                   age={animal.age}
                   gender={animal.gender}
                   animal={animal}
                 />
-              )
-            )
-          )}
+              ))}
         </ListFriends>
       </Container>
       <Footer />
@@ -176,4 +166,4 @@ const Initial: React.FC = () => {
   );
 };
 
-export default Initial;
+export default WithAuth(Initial);
