@@ -7,7 +7,6 @@ import { ContainerContent } from './styles';
 import { IconSigIn } from '../../../utils/icons'
 import { FormValues, SignInSchema } from './types';
 import { useToast } from '../../../hooks/ToastContext';
-import { useAuth } from '../../../hooks/AuthContext';
 import { Authentication } from '..';
 import { useCallback } from 'react';
 
@@ -18,7 +17,6 @@ const SignIn: React.FC = () => {
   };
 
   const {success, error} = useToast()
-  const {sigIn} = useAuth()
 
   const handleSubmitForm = useCallback(async (values: FormValues) => {
     
@@ -29,8 +27,7 @@ const SignIn: React.FC = () => {
         email,  
         password,  
       }
-
-      await sigIn(credentials)
+      console.log(credentials)
       
       success("Success login")
     } catch {
@@ -38,7 +35,6 @@ const SignIn: React.FC = () => {
     }
 
   }, [])
-
 
   return (
     <ContainerContent>

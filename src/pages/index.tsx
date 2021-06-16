@@ -8,25 +8,26 @@ import {
 } from '../styles/home.styles'
 import { Footer } from '../components/Footer'
 import { IconHome } from '../utils/icons'
-
+import dataServer from '../services/server.json';
 import Card from '../components/Card';
 import { Header } from '../components/Header';
 import { useEffect, useState } from 'react';
-import { api } from '../services/api';
-import { Animal } from '../hooks/types/modal';
 
 export default function Home() {
 
-  const [animal, setAnimal] = useState<Animal[]>();
+  const [animalsParser, setAnimalsParser] = useState([]);
 
-  useEffect(() =>{
-    api.get('/animals?_page=1&_limit=12')
-      .then(response => {
-        setAnimal(response.data)
-      })
-      .catch(err => console.error(err))
+  useEffect(() => {
+    const { animals } = dataServer
+    let animalParser = []
+
+    for (let animalIndex=0; animalIndex <= 11; animalIndex++) {
+      animalParser.push(animals[animalIndex])
+    }
+
+    setAnimalsParser(animalParser)
   }, [])
-    
+
   return (
     <>
       <Head>
@@ -128,15 +129,16 @@ export default function Home() {
             </button>
           </div>
           <aside>
-              {animal?.map(animal => (
-                <div>
+              {animalsParser?.map(animal => (
+                <div
+                  key={Math.random()}
+                >
                   <Card 
-                    photo={animal.photo}
-                    key={animal.id}
-                    name={animal.name} 
-                    age={animal.age}
-                    gender={animal.gender}
-                    animal={animal}
+                    photo="/images/dogCard.png"
+                    key={Math.random()}
+                    name="Cenora" 
+                    age={2}
+                    gender="m"
                   />
                 </div>
               ))}

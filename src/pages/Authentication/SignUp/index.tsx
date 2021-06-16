@@ -1,11 +1,9 @@
 import Input from '../../../components/Input';
 
 import { ContainerContent } from './styles';
-import { IconSigUp } from '../../../utils/icons';
 import { Form, Formik } from 'formik';
 import { FormValues, SignUpSchema } from './types';
 import React from 'react';
-import { Authentication } from '..';
 
 const SignUp: React.FC = () => {
 
