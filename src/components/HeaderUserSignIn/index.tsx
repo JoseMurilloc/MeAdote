@@ -6,6 +6,7 @@ import { ImExit } from 'react-icons/im';
 import { IoMdHelpCircle } from 'react-icons/io';
 import { ActionUser, Container, Content } from './styles';
 import { useAuth } from '../../hooks/AuthContext';
+import Link from 'next/link';
 
 const HeaderUserSignIn: React.FC = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -18,11 +19,13 @@ const HeaderUserSignIn: React.FC = () => {
 
   return (
     <Container>
-      <img 
-        src="/images/MeAdotaLogo.svg" 
-        alt="Logo MeAdota" 
-        className="LogoMeAdote"
-      />
+      <Link href="/Initial">
+        <img 
+          src="/images/MeAdotaLogo.svg" 
+          alt="Logo MeAdota" 
+          className="LogoMeAdote"
+        />
+      </Link>
 
       <Content>
         <div className="containerFavorite">

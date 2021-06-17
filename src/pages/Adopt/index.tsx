@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderUserSignIn from "../../components/HeaderUserSignIn";
 import Input from "../../components/Input";
 import { Container, ModalDetailsPet } from "./styles";
 import { Form, Formik } from "formik";
 import { FormValues } from "./types";
 import { FaHeart } from "react-icons/fa";
+import { useRouter } from "next/router";
+import api from "../../services/api";
+import Link from "next/link";
 
 export default function Adopt() {
 
+  const route = useRouter()
+  const {id} = route.query
+
   const [activeIndexImage, setActiveIndexImage] = useState(0);
+
+  // Load data of pet for show on table
+  useEffect(() => {
+    api.get('/pet', { params: { id } })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }, [])
 
   const initialValues: FormValues = {
     email: "",
@@ -28,7 +45,7 @@ export default function Adopt() {
                 alt="pet"
               />
               <div className="images">
-                  {[0, 1, 2].map((image, index) => (
+                  {[0, 1, 2].map((_, index) => (
                     <button 
                       className={activeIndexImage === index ? 'active': ''}
                       type="button"
@@ -122,7 +139,7 @@ export default function Adopt() {
               <div style={{width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 30}}>
                 <span>
                   Dúvidas sobre cuidados?
-                  <a href="/">Clique aqui</a>
+                  <Link href="/">Clique aqui</Link>
                 </span>
               </div>
             </Form>

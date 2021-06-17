@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Container } from './styles';
 
@@ -7,11 +8,13 @@ export function Header() {
   return (
     <Container>
       <div className="content">
-        <img 
-          src="/images/MeAdotaLogo.svg" 
-          alt="Logo page"
-          className="MeAdotaLogo"
-        />
+        <Link href="/Initial">
+          <img 
+            src="/images/MeAdotaLogo.svg" 
+            alt="Logo page"
+            className="MeAdotaLogo"
+          />
+        </Link>
 
         <nav>
           <ul>

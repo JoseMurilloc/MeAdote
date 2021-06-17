@@ -9,6 +9,7 @@ export const Container = styled.div`
   img.LogoMeAdote {
     width: 3.7333rem;
     height: 3.7333rem;
+    cursor: pointer;
   }
 
   @media (max-width: 945px) {
