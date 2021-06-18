@@ -3,14 +3,25 @@ import { DetailsAnimalModalProps, ModalContextData, Animal } from "./types/modal
 import Modal from "react-modal";
 import { FaHeart } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
+import { useRouter } from "next/router";
 
 const ModalContext = createContext<ModalContextData>(
   {} as ModalContextData
 );
 
-const DetailsAnimalModal: React.FC<DetailsAnimalModalProps> = ({animal, onOpen, onClose}) => {
+const DetailsAnimalModal: React.FC<DetailsAnimalModalProps> = (
+  {animal, onOpen, onClose}
+) => {
   const [activeIndexImage, setActiveIndexImage] = useState(0);
   
+  const { push } = useRouter()
+
+  function handleClickPushPageAdopt() {
+    onClose()
+    push({
+      pathname: `/Adopt/${animal.id}`,
+    })
+  }
 
   function handleClickImage (index: number) {
     setActiveIndexImage(index);
@@ -81,7 +92,12 @@ const DetailsAnimalModal: React.FC<DetailsAnimalModalProps> = ({animal, onOpen, 
         </div>
       </div>
 
-     <button className="to-adopt">Adotar</button>
+      <button 
+        className="to-adopt"
+        onClick={() => handleClickPushPageAdopt()}
+      >
+      Adotar
+    </button>
     </Modal>
   )  
 }

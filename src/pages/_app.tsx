@@ -1,10 +1,11 @@
 import React from 'react';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/router'
 import AppProvider from '../hooks'
 import GlobalStyles from '../styles/GlobalStyles'
-import HeaderUserSignIn from '../components/HeaderUserSignIn';
-import { Authentication } from './Authentication';
+import HeaderUserSignIn from '../components/HeaderUserSignIn'
+import { Authentication } from './Authentication'
+
 
 function MyApp({ Component, pageProps }) {
   const route = useRouter()

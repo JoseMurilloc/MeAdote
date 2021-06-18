@@ -16,15 +16,8 @@ export default function Adopt() {
 
   const [activeIndexImage, setActiveIndexImage] = useState(0);
 
-  // Load data of pet for show on table
   useEffect(() => {
-    api.get('/pet', { params: { id } })
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    console.log(id)
   }, [])
 
   const initialValues: FormValues = {
